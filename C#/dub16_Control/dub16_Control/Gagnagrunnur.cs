@@ -68,22 +68,12 @@ namespace dub16_Control
                 CloseConnection();
             }
         }
-        public void NyrMedlimurTafla(string kt)
-        {
-            kt = TrimKennitala(kt);
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "DROP TABLE IF EXISTS _" + kt + "; CREATE TABLE _" + kt + "(ID INT PRIMARY KEY NOT NULL auto_increment, heiti VARCHAR(255));";
-                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
-                nySQLskipun.ExecuteNonQuery();
-                CloseConnection();
-            }
-        }
-        public void NyrMedlimur(string kt, string nafn, string netfang, string simi)
+
+        public void NyrMedlimur(string nafn, string kt, string simi)
         {
             if (OpenConnection() == true)
             {
-                fyrirspurn = "INSERT INTO medlimur (id_medlimur, nafn, netfang, simanumer) VALUES ('" + kt + "','" + nafn + "','" + netfang + "','" + simi + "')";
+                fyrirspurn = "INSERT INTO Medlimur (nafn, kennitala, simi) VALUES ('" + nafn + "','" + kt + "','" + simi + "')";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();

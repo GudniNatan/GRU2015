@@ -26,12 +26,6 @@ namespace dub16_Control
         public Form2()
         {
             InitializeComponent();
-        }
-        public void Form2Load(string kt) //Þegar Form2 er sýnt
-        {
-            notandi = kt;
-            lb_notandi.Text = "Notandi: " + kt;
-
             try
             {
                 gagnagrunnur.TengingVidGagnagrunn();
@@ -40,6 +34,13 @@ namespace dub16_Control
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+        public void Form2Load(string kt) //Þegar Form2 er sýnt
+        {
+            notandi = kt;
+            lb_notandi.Text = "Notandi: " + kt;
+
+            
 
             /*Þetta eru dálkarnir sem eru efst í listViewinu*/
             listView1.Columns.Add("ID", 60);
@@ -47,7 +48,7 @@ namespace dub16_Control
             listView1.Columns.Add("kennitala", 80);
             listView1.Columns.Add("sími", 80);
 
-            FyllaListView("Medlimur");
+            FyllaListView("Medlimur"); 
         }
         void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -176,6 +177,23 @@ namespace dub16_Control
                 default:
                     MessageBox.Show("Villa");
                     break;
+            }
+        }
+
+        private void bt_nyrMedlimur_Click(object sender, EventArgs e)
+        {
+            string nafn = tb_nyrMedlimurNafn.Text;
+            string kt = tb_nyrMedlimurKennitala.Text;
+            string simi = tb_nyrMedlimurSimi.Text;
+            try
+            {
+                gagnagrunnur.NyrMedlimur(nafn, kt, simi);
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
             }
         }
 

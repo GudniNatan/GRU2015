@@ -250,6 +250,7 @@
             this.bt_nyrMedlimur.TabIndex = 6;
             this.bt_nyrMedlimur.Text = "Nýr Meðlimur";
             this.bt_nyrMedlimur.UseVisualStyleBackColor = true;
+            this.bt_nyrMedlimur.Click += new System.EventHandler(this.bt_nyrMedlimur_Click);
             // 
             // tb_nyrMedlimurSimi
             // 
