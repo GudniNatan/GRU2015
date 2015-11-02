@@ -1,0 +1,11 @@
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.exe.config
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.exe
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.pdb
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\MySql.Data.dll
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.csprojResolveAssemblyReference.cache
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Form1.resources
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Properties.Resources.resources
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.csproj.GenerateResource.Cache
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.exe
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.pdb
+C:\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Form2.resources
