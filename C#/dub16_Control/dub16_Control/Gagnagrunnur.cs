@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
 
@@ -97,11 +101,11 @@ namespace dub16_Control
             }
             return kennitala;
         }
-        public void Eyda(string notandi, string id)
+        public void Eyda(string tafla, string id)
         {
             if (OpenConnection() == true)
             {
-                fyrirspurn = "DELETE FROM " + notandi + " where id ='" + id + "'";
+                fyrirspurn = "DELETE FROM " + tafla + " where id ='" + id + "'";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();
@@ -145,7 +149,7 @@ namespace dub16_Control
                 {
                     for (int i = 0; i < sqllesari.FieldCount; i++)
                     {
-                        line += (sqllesari.GetValue(i).ToString()) + ":";
+                        line += (sqllesari.GetValue(i).ToString()) + "|";
                     }
                     faerslur.Add(line);
                     line = null;
@@ -226,6 +230,33 @@ namespace dub16_Control
                     iSum_t = iSum / 11;
                 }
                 if ((iSum_t * 11) - iSum == int.Parse(kennitala[8].ToString()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsAdmin(string kennitala)
+        {
+            string lina = null;
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "SELECT Admin.ID  FROM ADMIN INNER JOIN Medlimur ON Admin.medlimur_id = Medlimur.ID WHERE Medlimur.Kennitala = '" + kennitala + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                sqllesari = nySQLskipun.ExecuteReader();
+                while (sqllesari.Read())
+                {
+                    for (int i = 0; i < sqllesari.FieldCount; i++)
+                    {
+                        lina += (sqllesari.GetValue(i).ToString()) + ":";
+                    }
+                }
+                sqltenging.Close();
+                if (lina == string.Empty || lina == null)
+                {
+                    return false;
+                }
+                else
                 {
                     return true;
                 }

@@ -50,3 +50,10 @@ VALUES
 INSERT INTO Skraning(vidburdur_id, medlimur_id)
 VALUES
 (1, 1);
+
+
+SELECT Admin.ID 
+FROM ADMIN
+INNER JOIN Medlimur
+ON Admin.medlimur_id = Medlimur.ID
+WHERE Medlimur.Kennitala = "1803982879";
