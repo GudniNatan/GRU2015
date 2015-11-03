@@ -1,0 +1,196 @@
+ body {
+                max-width: 80em;  /*1280px*/
+                margin: 0 auto;
+            }
+            h1{
+                padding-right: 1em;
+
+            }
+            
+            }
+            h2, h4 {
+                margin: 0;
+                padding: 1em;
+            }
+            .pure-g div, 
+            .pure-g article,
+            .pure-g aside {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            
+                /*border: 1px solid rgb(255,195,13);*/
+            }
+            p
+            {
+              margin: 10px;
+            }
+            .tabs {
+  position: relative;   
+  min-height: 200px; /* This part sucks */
+  height: 300px;
+  clear: both;
+  margin: 25px 0;
+}
+
+.tab {
+  float: left;
+}
+.tab label {
+  background: #eee; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  margin-left: -1px; 
+  position: relative;
+  left: 1px; 
+}
+.tab [type=radio] {
+  display: none;   
+}
+.content {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  background: white;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  border: 1px solid #ccc; 
+}
+[type=radio]:checked ~ label {
+  background: white;
+  border-bottom: 1px solid white;
+  z-index: 2;
+}
+[type=radio]:checked ~ label ~ .content {
+  z-index: 1;
+}
+            /*  
+                ATHUGIÐ! pure-u~ klasar eru hannaðir sem ílát fyrir annað efni. 
+                EKKI setja útlitsstíla á þá (t.d. border, því þá riðlast uppbyggingin). 
+                Þó má gera undantekningu á því, t. d. á meðan hönnun vefsins stendur yfir.            
+            */ 
+
+            
+.custom-wrapper {
+    background-color: #ff9c90;
+    margin-bottom: 1em;
+    -webkit-font-smoothing: antialiased;
+    height: 2.1em;
+    overflow: hidden;
+    -webkit-transition: height 0.5s;
+    -moz-transition: height 0.5s;
+    -ms-transition: height 0.5s;
+    transition: height 0.5s;
+}
+
+.custom-wrapper.open {
+    height: 14em;
+}
+
+.custom-menu-3 {
+    text-align: right;
+}
+
+.custom-toggle {
+    width: 34px;
+    height: 34px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.custom-toggle .bar {
+    background-color: #777;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.custom-toggle .bar:first-child {
+    -webkit-transform: translateY(-6px);
+    -moz-transform: translateY(-6px);
+    -ms-transform: translateY(-6px);
+    transform: translateY(-6px);
+}
+
+.custom-toggle.x .bar {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.custom-toggle.x .bar:first-child {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 47.999em) {
+
+    .custom-menu-3 {
+        text-align: right;
+    }
+
+    .custom-toggle {
+        display: block;
+    }
+
+}
+.main {
+    padding: 2em;
+    color: black;
+}
+.slide {
+    padding-left: 5em;
+    width: 500px;
+    height: 400px;
+      -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 20s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    
+
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+    0%   {background-image: url("img/243257-funny-jokes-and-quotes.jpg");}
+    20%  {background-image: url("img/asdasdasd.jpg");}
+    40%  {background-image: url("img/funny-black-racist-pictures-JSqH.jpg");}
+    60%  {background-image: url("img/lefunny.net-funny-jokes-quotes-animals-pictures-Favim.com-585310.jpg");}
+    80%  {background-image: url("img/bad_luck_posters_and_funny_stuff-s500x400-99479-580.jpg");}
+    100% {background-image: url("img/Valentine-Dumpster-500x400.jpg");}
+}
+
+/* Standard syntax */
+@keyframes example {
+    0%   {background-image: url("img/243257-funny-jokes-and-quotes.jpg");}
+    20%  {background-image: url("img/asdasdasd.jpg");}
+    40%  {background-image: url("img/funny-black-racist-pictures-JSqH.jpg");}
+    60%  {background-image: url("img/lefunny.net-funny-jokes-quotes-animals-pictures-Favim.com-585310.jpg");}
+    80%  {background-image: url("img/bad_luck_posters_and_funny_stuff-s500x400-99479-580.jpg");}
+    100% {background-image: url("img/Valentine-Dumpster-500x400.jpg");}
+}
+figure
+{
+    margin: 0;
+}
+figure img {
+    width: 100%;
+    height: auto;
+}
