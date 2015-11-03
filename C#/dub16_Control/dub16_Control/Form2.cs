@@ -40,14 +40,14 @@ namespace dub16_Control
             notandi = kt;
             lb_notandi.Text = "Notandi: " + kt;
 
-            
 
+            
             /*Þetta eru dálkarnir sem eru efst í listViewinu*/
             listView1.Columns.Add("ID", 60);
             listView1.Columns.Add("Nafn", 150);
             listView1.Columns.Add("kennitala", 80);
             listView1.Columns.Add("sími", 80);
-
+            
             FyllaListView("Medlimur"); 
         }
         void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
@@ -152,36 +152,45 @@ namespace dub16_Control
         {
             List<string> lin = gagnagrunnur.LesaUrSqlToflu(tabpage);
             string[] items = lin[0].Split('|');
-            switch (tabpage)
+            if (listView1.SelectedIndices.Count <= 0)
             {
-                case "Medlimur":
-                    tb_breytaMedlimID.Text = items[0];
-                    tb_breytaMedlimNafn.Text = items[1];
-                    tb_breytaMedlimKennitala.Text = items[2];
-                    tb_breytaMedlimSimi.Text = items[3];
-                    break;
-                case "Vidburdur":
-                    tb_breytaVidburdiID.Text = items[0];
-                    tb_breytaVidburdiHeiti.Text = items[1];
-                    tb_breytaVidburdiDagsetning.Text = items[2];
-                    break;
-                case "Skraning":
-                    tb_breytaSkraninguID.Text = items[0];
-                    tb_breytaSkraninguVidburdurID.Text = items[1];
-                    tb_breytaSkraninguMedlimurID.Text = items[2];
-                    break;
-                case "Admin":
-                    tb_breytaAdminID.Text = items[0];
-                    tb_breytaAdminMedlimurID.Text = items[1];
-                    break;
-                default:
-                    MessageBox.Show("Villa");
-                    break;
+                return;
+            }
+            int intSelectIndex = listView1.SelectedIndices[0];
+            if (intSelectIndex >= 0)
+            {
+                switch (tabpage)
+                {
+                    case "Medlimur":
+                        tb_breytaMedlimID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaMedlimNafn.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaMedlimKennitala.Text = listView1.SelectedItems[0].SubItems[2].Text;
+                        tb_breytaMedlimSimi.Text = listView1.SelectedItems[0].SubItems[3].Text;
+                        break;
+                    case "Vidburdur":
+                        tb_breytaVidburdiID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaVidburdiDagsetning.Text = listView1.SelectedItems[0].SubItems[2].Text;
+                        break;
+                    case "Skraning":
+                        tb_breytaSkraninguID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaSkraninguVidburdurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaSkraninguMedlimurID.Text = listView1.SelectedItems[0].SubItems[2].Text;
+                        break;
+                    case "Admin":
+                        tb_breytaAdminID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaAdminMedlimurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        break;
+                    default:
+                        MessageBox.Show("Villa");
+                        break;
+                }
             }
         }
 
         private void bt_nyrMedlimur_Click(object sender, EventArgs e)
         {
+            
             string nafn = tb_nyrMedlimurNafn.Text;
             string kt = tb_nyrMedlimurKennitala.Text;
             string simi = tb_nyrMedlimurSimi.Text;
@@ -196,6 +205,15 @@ namespace dub16_Control
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void bt_refresh_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        
+
+        
 
     }
 }

@@ -184,7 +184,7 @@ namespace dub16_Control
                 {
                     for (int i = 0; i < sqllesari.FieldCount; i++)
                     {
-                        lina += (sqllesari.GetValue(i).ToString()) + ":";
+                        lina += (sqllesari.GetValue(i).ToString()) + "|";
                     }
                 }
                 sqltenging.Close();
@@ -238,7 +238,7 @@ namespace dub16_Control
                 {
                     for (int i = 0; i < sqllesari.FieldCount; i++)
                     {
-                        lina += (sqllesari.GetValue(i).ToString()) + ":";
+                        lina += (sqllesari.GetValue(i).ToString()) + "|";
                     }
                 }
                 sqltenging.Close();

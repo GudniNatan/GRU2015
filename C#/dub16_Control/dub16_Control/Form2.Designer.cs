@@ -95,6 +95,7 @@
             this.tb_eydaID = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.bt_eyda = new System.Windows.Forms.Button();
+            this.bt_refresh = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -728,11 +729,22 @@
             this.bt_eyda.UseVisualStyleBackColor = true;
             this.bt_eyda.Click += new System.EventHandler(this.bt_eyda_Click);
             // 
+            // bt_refresh
+            // 
+            this.bt_refresh.Location = new System.Drawing.Point(269, 281);
+            this.bt_refresh.Name = "bt_refresh";
+            this.bt_refresh.Size = new System.Drawing.Size(75, 23);
+            this.bt_refresh.TabIndex = 7;
+            this.bt_refresh.Text = "Refresh";
+            this.bt_refresh.UseVisualStyleBackColor = true;
+            this.bt_refresh.Click += new System.EventHandler(this.bt_refresh_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 495);
+            this.Controls.Add(this.bt_refresh);
             this.Controls.Add(this.bt_eyda);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tb_eydaID);
@@ -836,5 +848,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button bt_nyrAdmin;
+        private System.Windows.Forms.Button bt_refresh;
     }
 }
