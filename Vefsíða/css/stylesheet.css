@@ -13,13 +13,9 @@ table{
 	margin: 0;
 	margin-bottom: 1em;
 }
-nav *{
-	display: inline-block;
-}
 nav{
 	text-align: center;
 	width: 100%;
-	border-bottom: 1px solid black;
 }
 fieldset{
 	margin: 0;
@@ -39,4 +35,7 @@ fieldset input{
 	background-position: center right;
     background-repeat: no-repeat;
     background-size: auto 40%;
+}
+div{
+	display: block;
 }
