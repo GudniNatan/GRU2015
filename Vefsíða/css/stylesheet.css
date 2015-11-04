@@ -11,7 +11,7 @@ form{
 }
 table{
 	margin: 0;
-	margin-bottom: 1em;
+	border-bottom: 1px solid gray;
 }
 nav{
 	text-align: center;
@@ -35,6 +35,7 @@ fieldset input{
 	background-position: center right;
     background-repeat: no-repeat;
     background-size: auto 40%;
+    border-radius: 1em;
 }
 div{
 	display: block;

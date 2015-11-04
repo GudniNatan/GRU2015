@@ -57,3 +57,11 @@ FROM ADMIN
 INNER JOIN Medlimur
 ON Admin.medlimur_id = Medlimur.ID
 WHERE Medlimur.Kennitala = "1803982879";
+
+SELECT * FROM medlimur;
+
+SELECT Skraning.ID, Skraning.vidburdur_id, Skraning.medlimur_id, Vidburdur.heiti  FROM Skraning INNER JOIN Vidburdur ON Vidburdur.id = Skraning.vidburdur_id  INNER JOIN Medlimur ON Medlimur.id =  Skraning.medlimur_id WHERE Medlimur.kennitala = '1803982879';
+
+SELECT id , heiti FROM Vidburdur;
+
+SELECT id , heiti FROM Vidburdur WHERE dagsetning > CURDATE();

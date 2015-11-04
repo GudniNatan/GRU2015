@@ -36,21 +36,21 @@
 	    </div>
 	</div>
 </nav>
-	<form action="skraning.php" method="post">
+	<form action="skraning.php" method="post" class="pure-form">
 	<h2>Innskrá</h2>
 	<fieldset>
-	<p>Kennitala:<input type="text" name="kennitala"></p>
+  <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik"></p>
 	</fieldset>
 	<input type="hidden" name="login"> <!-- Segir PHP kóðanum hvað á að gera -->
 	<input type="submit" value="Innskrá">
 	</form>
 
-	<form action="skraning.php" method="post">
+	<form action="skraning.php" method="post" class="pure-form">
 	<h2>Nýskrá</h2>
 	<fieldset>
-	<p>Kennitala:<input type="text" name="kennitala"></p>
-	<p>Fullt nafn:<input type="text" name="nafn"></p>
-	<p>Símanúmer:<input type="text" name="simi"></p>
+	<input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik"></p>
+	<input type="text" name="nafn" placeholder="Nafn" required></p>
+	<input type="text" name="simi" placeholder="Sími" required pattern="\d{7}" title="Sjö stafa símanúmer, engin bil eða bandstrik" ></p>
 	</fieldset>
 	<input type="hidden" name="register">	
 	<input type="submit" value="Nýskrá">

@@ -13,6 +13,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
+<?php
+    include 'dbcon.php';
+    $fyrirspurn = "SELECT * FROM Vidburdur WHERE dagsetning > CURDATE()";
+
+    $result = $conn -> query($fyrirspurn);
+    while ($row = $result -> fetch()) {
+        $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+    }
+?>
 <nav class="custom-wrapper pure-g" id="menu">
       <div class="pure-u-1 pure-u-md-1-3">
         <div class="pure-menu">
@@ -37,125 +46,30 @@
     </div>
 </nav>
 <div class="main">
-
-        <section class="pure-g">
-            <article class="pure-u-1 pure-u-md-1 pure-u-lg-16-24">
-                <!-- nested row 1-->
-
-                <section class="pure-g">
-                    <div class="pure-u-1 pure-sm-17-24 pure-u-md-15-24 pure-u-lg-15-24">
-                        <h1>Dagskrá</h1>
-                    </div>
-
-                    <div class="pure-u-1 pure-sm-7-24 pure-u-md-9-24 pure-u-lg-9-24">
-                        
-                    </div>
-                </section>
-                <!-- nested row 2-->
-              <section class="pure-g">
-                    <div class="pure-u-0-24 pure-sm-6-24 pure-u-md-6-24 pure-u-lg-6-24">
-
-                    </div>
-                    <div class="pure-u-1 pure-sm-18-24 pure-u-md-18-24 pure-u-lg-18-24">
-
-                        <table class="pure-table" style="width: 100%">
-                            <thead>
-                                <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr class="pure-table-odd">
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr class="pure-table-odd">
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr class="pure-table-odd">
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr class="pure-table-odd">
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>   
-                                </tr>
-
-                                <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-
-                                 <tr>
-                                    <th>Dagur</th>
-                                    <th>Klukkan</th>
-                                    <th>Viðburður</th>
-                                    <th>Staðsetning</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </article>    
-            <aside class="pure-u-1 pure-u-md-1 pure-u-lg-8-24">
-            <img src="">
-
-              
-  
-            </aside>
-        </section><!-- end row 2 -->
-        <!-- row 3 -->
-        <footer class="pure-u-1">
-            <p></p>
-        </footer>
-        <!-- javascript -->
-        <script src=""></script>
+    <form id="dagaval" class="pure-form" action="dagskra.php">
+        <h2>Skoða dagskrá á völdu sviði</h2>
+        <p>Frá:   <input type="date" name="fyrstiDagur"></p>
+        <p>Til:   <input type="date" name="seinastiDagur"></p>
+        <input type="submit" value="Velja Dagsetningar">
+    </form>
+    <h1>Dagskrá á döfinni</h1>
+    <table class="pure-table" style="width: 100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Viðburður</th>
+                <th>Dagur</th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php           
+            foreach ($Vidburdir as $entry) {
+                echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td></tr>
+";              
+             }
+         ?>
+         </tbody>
+    </table>
 </div>
 
 

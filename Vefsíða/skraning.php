@@ -123,11 +123,11 @@
 				$skradirVidburdir[] = array($row['ID'], $row['vidburdur_id'], $row['heiti'], $row['dagsetning']);	//Breyta þessu ef við bætum við fleiri skráningarhlutum
 			}
 			if (count($skradirVidburdir) < 1) {
-				$skradirVidburdir[0][0] = "";
-				$skradirVidburdir[0][1] = "";
-				$skradirVidburdir[0][2] = "";
-				$skradirVidburdir[0][3] = "";
-				echo "Engir skráðir viðburðir.";
+				$skradirVidburdir[0][0] = "n/a";
+				$skradirVidburdir[0][1] = "n/a";
+				$skradirVidburdir[0][2] = "n/a";
+				$skradirVidburdir[0][3] = "n/a";
+				echo "Engir viðburðir skráðir á þessa kennitölu.";
 			}
 
 			$fyrirspurn = "SELECT id , heiti FROM Vidburdur WHERE dagsetning > CURDATE()";
@@ -148,7 +148,8 @@
 ?>
 </p>
 <div>
- <form  method="post" action="skraning.php" id="medlimur">
+<h2>Viðburðir sem þú ert skráð/ur á:</h2>
+ <form  class="pure-form" method="post" action="skraning.php" id="medlimur">
 	<input type="hidden" name="delevent">
 	<input type="hidden" name="login">
 	<table class="pure-table">
@@ -162,25 +163,26 @@
 			</tr>
 		</thead>
 		<tbody>
-		<?php
-			if (isset($_POST['kennitala'])) {
-				$kennitala = $_POST['kennitala'];
-				echo '<input type="hidden" name="kennitala" ' . 'value="' . $kennitala . '">
-';
-			}
-			
+		<?php			
 			foreach ($skradirVidburdir as $entry) {
-			 	echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td>" . $entry[3] . "</td>" . '<td><button type="submit" name="id" value="' . $entry[0] . '">Eyða</button></td><tr>
+			 	echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td>" . $entry[3] . "</td>" . '<td><button type="submit" name="id" value="' . $entry[0] . '">Eyða</button></td></tr>
 ';			 	
 			 }
 		 ?>
 		 </tbody>
 	</table>
+	<?php
+			if (isset($_POST['kennitala'])) {
+				$kennitala = $_POST['kennitala'];
+				echo '<input type="hidden" name="kennitala" ' . 'value="' . $kennitala . '">
+';
+			}
+	?>
 </form>
 </div>
 <div>
 	<h2>Skráning á viðburði</h2>
-	<form method="post" action="skraning.php" id="skravidburd">
+	<form class="pure-form" method="post" action="skraning.php" id="skravidburd">
 		<input type="hidden" name="addevent">
 		<input type="hidden" name="login">
 		<?php
