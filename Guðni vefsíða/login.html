@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+	<title>Skilaverkefni 2</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+	<nav>
+		<p>Dub16</p> <!-- Skipta út fyrir mynd -->
+		<p><a href="#">Myndir</a></p>
+		<p><a href="#">Viðburðir</a></p>
+		<p><a href="#">Innskrá</a></p>
+		<p><a href="#">Um Dub 16</a></p>
+	</nav>
+
+	<form action="skraning.php" method="post">
+	<h2>Innskrá</h2>
+	<fieldset>
+	<p>Kennitala:<input type="text" name="kennitala"></p>
+	</fieldset>
+	<input type="hidden" name="login"> <!-- Segir PHP kóðanum hvað á að gera -->
+	<input type="submit" value="Innskrá">
+	</form>
+
+	<form action="skraning.php" method="post">
+	<h2>Nýskrá</h2>
+	<fieldset>
+	<p>Kennitala:<input type="text" name="kennitala"></p>
+	<p>Fullt nafn:<input type="text" name="nafn"></p>
+	<p>Símanúmer:<input type="text" name="simi"></p>
+	</fieldset>
+	<input type="hidden" name="register">	
+	<input type="submit" value="Nýskrá">
+	</form>
+</body>
