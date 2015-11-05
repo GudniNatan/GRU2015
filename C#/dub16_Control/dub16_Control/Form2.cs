@@ -211,6 +211,25 @@ namespace dub16_Control
            
         }
 
+        private void bt_nySkraning_Click(object sender, EventArgs e)
+        {
+            string medlimur = tb_nySkraningMedlimurID.Text;
+            string vidburdur = tb_nySkraningVidburdurID.Text;
+            try
+            {
+                gagnagrunnur.NySkraning(vidburdur, medlimur);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        
+
+      
+
         
 
         

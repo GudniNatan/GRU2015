@@ -547,6 +547,7 @@
             this.bt_nySkraning.TabIndex = 6;
             this.bt_nySkraning.Text = "Ný Skráning";
             this.bt_nySkraning.UseVisualStyleBackColor = true;
+            this.bt_nySkraning.Click += new System.EventHandler(this.bt_nySkraning_Click);
             // 
             // tb_nySkraningMedlimurID
             // 

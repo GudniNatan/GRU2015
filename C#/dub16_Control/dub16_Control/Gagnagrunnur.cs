@@ -253,6 +253,46 @@ namespace dub16_Control
             }
             return false;
         }
+        public void NySkraning(string vid_id, string med_id)
+        {
+            string lina = null;
+            string vidID = vid_id;
+            string medID = med_id;
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "SELECT Skraning.ID, Skraning.vidburdur_id, Skraning.medlimur_id FROM Skraning INNER JOIN Medlimur ON  Medlimur.id = Skraning.medlimur_id INNER JOIN Vidburdur ON  Skraning.vidburdur_id = Vidburdur.ID where Skraning.medlimur_id ='" + med_id + "' and Skraning.vidburdur_id = '" + vid_id + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                sqllesari = nySQLskipun.ExecuteReader();
+                while (sqllesari.Read())
+                {
+                    for (int i = 0; i < sqllesari.FieldCount; i++)
+                    {
+                        lina += (sqllesari.GetValue(i).ToString()) + "|";
+                    }
+                }
+                sqltenging.Close();
+                if (lina == string.Empty || lina == null)
+                {
+                    MessageBox.Show("Þetta er Ekki til");//þetta er false
+                }
+                else
+                {
+                  
+                fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vid_id + "','" + med_id + "')";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                sqllesari = nySQLskipun.ExecuteReader();
+                while (sqllesari.Read())
+                {
+                    for (int i = 0; i < sqllesari.FieldCount; i++)
+                    {
+                        lina += (sqllesari.GetValue(i).ToString()) + "|";
+                    }
+                }
+                }
+            }
+
+
+        }
 
     }
 }
