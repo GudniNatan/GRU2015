@@ -41,14 +41,14 @@ namespace dub16_Control
             lb_notandi.Text = "Notandi: " + kt;
 
 
-            
+
             /*Þetta eru dálkarnir sem eru efst í listViewinu*/
             listView1.Columns.Add("ID", 60);
             listView1.Columns.Add("Nafn", 150);
             listView1.Columns.Add("kennitala", 80);
             listView1.Columns.Add("sími", 80);
-            
-            FyllaListView("Medlimur"); 
+
+            FyllaListView("Medlimur");
         }
         void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
@@ -95,6 +95,45 @@ namespace dub16_Control
                 default:
                     MessageBox.Show("Villa");
                     break;
+            }
+        }
+        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            List<string> lin = gagnagrunnur.LesaUrSqlToflu(tabpage);
+            string[] items = lin[0].Split('|');
+            if (listView1.SelectedIndices.Count <= 0)
+            {
+                return;
+            }
+            int intSelectIndex = listView1.SelectedIndices[0];
+            if (intSelectIndex >= 0)
+            {
+                switch (tabpage)
+                {
+                    case "Medlimur":
+                        tb_breytaMedlimID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaMedlimNafn.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaMedlimKennitala.Text = listView1.SelectedItems[0].SubItems[2].Text;
+                        tb_breytaMedlimSimi.Text = listView1.SelectedItems[0].SubItems[3].Text;
+                        break;
+                    case "Vidburdur":
+                        tb_breytaVidburdiID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaVidburdiDagsetning.Text = listView1.SelectedItems[0].SubItems[2].Text;
+                        break;
+                    case "Skraning":
+                        tb_breytaSkraninguID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaSkraninguVidburdurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaSkraninguMedlimurID.Text = listView1.SelectedItems[0].SubItems[2].Text;
+                        break;
+                    case "Admin":
+                        tb_breytaAdminID.Text = listView1.SelectedItems[0].SubItems[0].Text;
+                        tb_breytaAdminMedlimurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        break;
+                    default:
+                        MessageBox.Show("Villa");
+                        break;
+                }
             }
         }
         private void FyllaListView(string tafla)
@@ -146,58 +185,20 @@ namespace dub16_Control
             {
                 MessageBox.Show("Gat ekki eytt: " + ex);
             }
-            
+
         }
-        private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
-        {
-            List<string> lin = gagnagrunnur.LesaUrSqlToflu(tabpage);
-            string[] items = lin[0].Split('|');
-            if (listView1.SelectedIndices.Count <= 0)
-            {
-                return;
-            }
-            int intSelectIndex = listView1.SelectedIndices[0];
-            if (intSelectIndex >= 0)
-            {
-                switch (tabpage)
-                {
-                    case "Medlimur":
-                        tb_breytaMedlimID.Text = listView1.SelectedItems[0].SubItems[0].Text;
-                        tb_breytaMedlimNafn.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                        tb_breytaMedlimKennitala.Text = listView1.SelectedItems[0].SubItems[2].Text;
-                        tb_breytaMedlimSimi.Text = listView1.SelectedItems[0].SubItems[3].Text;
-                        break;
-                    case "Vidburdur":
-                        tb_breytaVidburdiID.Text = listView1.SelectedItems[0].SubItems[0].Text;
-                        tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                        tb_breytaVidburdiDagsetning.Text = listView1.SelectedItems[0].SubItems[2].Text;
-                        break;
-                    case "Skraning":
-                        tb_breytaSkraninguID.Text = listView1.SelectedItems[0].SubItems[0].Text;
-                        tb_breytaSkraninguVidburdurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                        tb_breytaSkraninguMedlimurID.Text = listView1.SelectedItems[0].SubItems[2].Text;
-                        break;
-                    case "Admin":
-                        tb_breytaAdminID.Text = listView1.SelectedItems[0].SubItems[0].Text;
-                        tb_breytaAdminMedlimurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                        break;
-                    default:
-                        MessageBox.Show("Villa");
-                        break;
-                }
-            }
-        }
+
 
         private void bt_nyrMedlimur_Click(object sender, EventArgs e)
         {
-            
+
             string nafn = tb_nyrMedlimurNafn.Text;
             string kt = tb_nyrMedlimurKennitala.Text;
             string simi = tb_nyrMedlimurSimi.Text;
             try
             {
                 gagnagrunnur.NyrMedlimur(nafn, kt, simi);
-                
+
             }
             catch (Exception ex)
             {
@@ -208,16 +209,34 @@ namespace dub16_Control
 
         private void bt_refresh_Click(object sender, EventArgs e)
         {
-           
-        }
-
-        private void bt_nySkraning_Click(object sender, EventArgs e)
-        {
-            string medlimur = tb_nySkraningMedlimurID.Text;
-            string vidburdur = tb_nySkraningVidburdurID.Text;
+            listView1.Items.Clear();
+            List<string> linur = new List<string>();
             try
             {
-                gagnagrunnur.NySkraning(vidburdur, medlimur);
+                linur = gagnagrunnur.LesaUrSqlToflu(tabpage);
+                foreach (string lin in linur)
+                {
+                    listView1.Items.Add(lin);
+                }
+                FyllaListView("Medlimur");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
+
+        private void bt_breytaMedlim_Click(object sender, EventArgs e)
+        {
+            string med_id = tb_breytaMedlimID.Text;
+            string med_nafn = tb_breytaMedlimNafn.Text;
+            string med_kt = tb_breytaMedlimKennitala.Text;
+            string med_simi = tb_breytaMedlimSimi.Text;
+            try
+            {
+                gagnagrunnur.UppfaeraMedlimur(med_id, med_nafn, med_kt, med_simi);
             }
             catch (Exception ex)
             {
@@ -226,13 +245,19 @@ namespace dub16_Control
             }
         }
 
-        
-
-      
-
-        
-
-        
-
+        private void bt_nySkraning_Click(object sender, EventArgs e)
+        {
+            int medlimur = Convert.ToInt32(tb_nySkraningMedlimurID.Text);
+            int vidburdur = Convert.ToInt32(tb_nySkraningVidburdurID.Text);
+            try
+            {
+                gagnagrunnur.NySkraning(vidburdur, medlimur);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
+

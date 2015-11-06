@@ -248,19 +248,20 @@ namespace dub16_Control
                 }
                 else
                 {
+
                     return true;
                 }
             }
             return false;
         }
-        public void NySkraning(string vid_id, string med_id)
+        public void NySkraning(int vid_id, int med_id)
         {
             string lina = null;
-            string vidID = vid_id;
-            string medID = med_id;
+            int vidID = vid_id;
+            int medID = med_id;
             if (OpenConnection() == true)
             {
-                fyrirspurn = "SELECT Skraning.ID, Skraning.vidburdur_id, Skraning.medlimur_id FROM Skraning INNER JOIN Medlimur ON  Medlimur.id = Skraning.medlimur_id INNER JOIN Vidburdur ON  Skraning.vidburdur_id = Vidburdur.ID where Skraning.medlimur_id ='" + med_id + "' and Skraning.vidburdur_id = '" + vid_id + "'";
+                fyrirspurn = "SELECT Vidburdur.ID, Medlimur.ID FROM Medlimur INNER JOIN Skraning ON  Medlimur.id = Skraning.medlimur_id INNER JOIN Vidburdur ON  Skraning.vidburdur_id = Vidburdur.ID where Medlimur.ID = '" + medID + "' and Vidburdur.ID = '" + vidID + "'";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 sqllesari = nySQLskipun.ExecuteReader();
                 while (sqllesari.Read())
@@ -278,21 +279,27 @@ namespace dub16_Control
                 else
                 {
                   
-                fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vid_id + "','" + med_id + "')";
+                fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vidID + "','" + medID + "')";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
-                sqllesari = nySQLskipun.ExecuteReader();
-                while (sqllesari.Read())
-                {
-                    for (int i = 0; i < sqllesari.FieldCount; i++)
-                    {
-                        lina += (sqllesari.GetValue(i).ToString()) + "|";
-                    }
-                }
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+                
                 }
             }
+         }
+        public void UppfaeraMedlimur(string id, string nafn, string kt, string simi)
+            {
+                if (OpenConnection() == true)
+                {
+                    fyrirspurn = "Update medlimur set id = '" + id +
+                        "', nafn='" + nafn + "',kennitala='" + kt + "',simi='" +
+                        simi + "' where id='" + id+ "'";
+                    nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                    nySQLskipun.ExecuteNonQuery();
+                    CloseConnection();
+                }
 
-
-        }
+            }
 
     }
 }

@@ -178,6 +178,7 @@
             this.bt_breytaMedlim.TabIndex = 6;
             this.bt_breytaMedlim.Text = "Breyta Meðlim";
             this.bt_breytaMedlim.UseVisualStyleBackColor = true;
+            this.bt_breytaMedlim.Click += new System.EventHandler(this.bt_breytaMedlim_Click);
             // 
             // tb_breytaMedlimSimi
             // 
@@ -695,6 +696,7 @@
             // 
             // listView1
             // 
+            this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(269, 22);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(380, 253);
@@ -786,7 +788,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label lb_notandi;
-        private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -850,5 +851,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button bt_nyrAdmin;
         private System.Windows.Forms.Button bt_refresh;
+        private System.Windows.Forms.ListView listView1;
     }
 }
