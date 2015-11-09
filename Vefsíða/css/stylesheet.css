@@ -79,7 +79,9 @@ article{
 }
 .mainContent{
 	order: 1;
+	box-sizing: border-box;
 	text-align: left;
+	padding: 2em;
 }
 .signInTabs{
 	order: 2;
@@ -98,6 +100,12 @@ article{
     }
 
 }
+@media (min-width: 64em) {
+	.contentDiv{
+    	max-width: 25%;
+    }
+}
+
 .logoDiv{
 	display: block;
 	text-align: center;
