@@ -147,61 +147,63 @@
 	}
 ?>
 </p>
-<div>
-<h2>Viðburðir sem þú ert skráð/ur á:</h2>
- <form  class="pure-form" method="post" action="skraning.php" id="medlimur">
-	<input type="hidden" name="delevent">
-	<input type="hidden" name="login">
-	<table class="pure-table">
-		<thead>
-			<tr>
-				<th>Skráning nr.</th>
-				<th>Viðburður ID</th>
-				<th>Nafn á viðburði</th>
-				<th>Dagsetning</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-		<?php			
-			foreach ($skradirVidburdir as $entry) {
-			 	echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td>" . $entry[3] . "</td>" . '<td><button type="submit" name="id" value="' . $entry[0] . '">Eyða</button></td></tr>
-';			 	
-			 }
-		 ?>
-		 </tbody>
-	</table>
-	<?php
-			if (isset($_POST['kennitala'])) {
-				$kennitala = $_POST['kennitala'];
-				echo '<input type="hidden" name="kennitala" ' . 'value="' . $kennitala . '">
-';
-			}
-	?>
-</form>
-</div>
-<div>
-	<h2>Skráning á viðburði</h2>
-	<form class="pure-form" method="post" action="skraning.php" id="skravidburd">
-		<input type="hidden" name="addevent">
+<main>
+	<div>
+	<h2>Viðburðir sem þú ert skráð/ur á:</h2>
+	 <form  class="pure-form" method="post" action="skraning.php" id="medlimur">
+		<input type="hidden" name="delevent">
 		<input type="hidden" name="login">
+		<table class="pure-table">
+			<thead>
+				<tr>
+					<th>Skráning nr.</th>
+					<th>Viðburður ID</th>
+					<th>Nafn á viðburði</th>
+					<th>Dagsetning</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			<?php			
+				foreach ($skradirVidburdir as $entry) {
+				 	echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td>" . $entry[3] . "</td>" . '<td><button type="submit" name="id" value="' . $entry[0] . '">Eyða</button></td></tr>
+	';			 	
+				 }
+			 ?>
+			 </tbody>
+		</table>
 		<?php
-			if (isset($_POST['kennitala'])) {
+				if (isset($_POST['kennitala'])) {
 					$kennitala = $_POST['kennitala'];
 					echo '<input type="hidden" name="kennitala" ' . 'value="' . $kennitala . '">
 	';
-			}
+				}
 		?>
-		<select name="id" form="skravidburd">
-		<?php
-			foreach ($allirVidburdir as $entry) {
-			echo '<option value="' . $entry[0] . '">' . $entry[1] . '</option>
-	';			 	
-			}
-		?>
-		</select>
-		<input type="submit" value="Skrá viðburð">
 	</form>
-</div>
+	</div>
+	<div>
+		<h2>Skráning á viðburði</h2>
+		<form class="pure-form" method="post" action="skraning.php" id="skravidburd">
+			<input type="hidden" name="addevent">
+			<input type="hidden" name="login">
+			<?php
+				if (isset($_POST['kennitala'])) {
+						$kennitala = $_POST['kennitala'];
+						echo '<input type="hidden" name="kennitala" ' . 'value="' . $kennitala . '">
+		';
+				}
+			?>
+			<select name="id" form="skravidburd">
+			<?php
+				foreach ($allirVidburdir as $entry) {
+				echo '<option value="' . $entry[0] . '">' . $entry[1] . '</option>
+		';			 	
+				}
+			?>
+			</select>
+			<input type="submit" value="Skrá viðburð">
+		</form>
+	</div>
+</main>
 <script src="js/javascript.js"></script>
 </body>

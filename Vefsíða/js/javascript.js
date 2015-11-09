@@ -5,9 +5,12 @@ $(document).ready(function(){
     });
     if ($(".notification").text().length > 1) {
     	$(".notification").css("padding", "1em");
-    	console.log($(".notification").text().length);
     };
+    $( "tr:even" ).addClass("pure-table-odd");  //Önnur hver lína í töflum með dekkri bakgrunn
 });
+
+
+//Kóði fyrir mobile nav
 (function (window, document) {
 var menu = document.getElementById('menu'),
     WINDOW_CHANGE_EVENT = ('onorientationchange' in window) ? 'orientationchange':'resize';

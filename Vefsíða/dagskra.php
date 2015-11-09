@@ -13,15 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
-<?php
-    include 'dbcon.php';
-    $fyrirspurn = "SELECT * FROM Vidburdur WHERE dagsetning > CURDATE()";
 
-    $result = $conn -> query($fyrirspurn);
-    while ($row = $result -> fetch()) {
-        $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
-    }
-?>
 <nav class="custom-wrapper pure-g" id="menu">
       <div class="pure-u-1 pure-u-md-1-3">
         <div class="pure-menu">
@@ -45,11 +37,42 @@
         </div>
     </div>
 </nav>
-<div class="main">
-    <form id="dagaval" class="pure-form" action="dagskra.php">
+<p class="notification"><!-- Birtist ef ekki næst tenging við gagnagrunn -->
+<?php
+        include 'dbcon.php';
+        
+        if (isset($_POST['fyrstiDagur']) && isset($_POST['seinastiDagur'])) {
+            $fyrstiDagur = $_POST['fyrstiDagur'];
+            $seinastiDagur = $_POST['seinastiDagur'];
+            $Vidburdir = array();
+
+            $fyrirspurn = "SELECT * FROM Vidburdur WHERE dagsetning BETWEEN '" . $fyrstiDagur . "' AND '" . $seinastiDagur . "'";
+    
+            $result = $conn -> query($fyrirspurn);
+            while ($row = $result -> fetch()) {
+                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+            }
+
+            if (count($Vidburdir) < 1) {
+                $Vidburdir[] = array("n/a", "n/a", "n/a");
+                echo "Engir viðburðir skráðir á þessu tímabili.";
+            }
+        }
+        else{
+            $fyrirspurn = "SELECT * FROM Vidburdur WHERE dagsetning > CURDATE()";
+    
+            $result = $conn -> query($fyrirspurn);
+            while ($row = $result -> fetch()) {
+                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+            }
+        }
+    ?>
+</p>
+<main>
+    <form id="dagaval" class="pure-form" action="dagskra.php" method="post">
         <h2>Skoða dagskrá á völdu sviði</h2>
-        <p>Frá:   <input type="date" name="fyrstiDagur"></p>
-        <p>Til:   <input type="date" name="seinastiDagur"></p>
+        <p>Frá:   <input type="date" name="fyrstiDagur" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"></p>
+        <p>Til:   <input type="date" name="seinastiDagur" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"></p>
         <input type="submit" value="Velja Dagsetningar">
     </form>
     <h1>Dagskrá á döfinni</h1>
@@ -70,7 +93,7 @@
          ?>
          </tbody>
     </table>
-</div>
+</main>
 
 
     <script type="text/javascript" src="js/javascript.js"></script>
