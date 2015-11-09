@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <head>
     <title>Dub16</title>
-	<link rel="stylesheet" type="text/css" href="css/stilsida.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.css">
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="GRU2L4U Vefsíða">
@@ -10,6 +8,8 @@
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="css/stilsida.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
