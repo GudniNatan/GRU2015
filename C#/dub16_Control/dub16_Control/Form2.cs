@@ -185,6 +185,7 @@ namespace dub16_Control
             {
                 MessageBox.Show("Gat ekki eytt: " + ex);
             }
+            Refresh(tabpage);
 
         }
 
@@ -205,20 +206,23 @@ namespace dub16_Control
 
                 MessageBox.Show(ex.ToString());
             }
+            Refresh(tabpage);
         }
 
         private void bt_refresh_Click(object sender, EventArgs e)
+        {
+            Refresh(tabpage);
+            
+        }
+        private void Refresh(string tafla)
         {
             listView1.Items.Clear();
             List<string> linur = new List<string>();
             try
             {
                 linur = gagnagrunnur.LesaUrSqlToflu(tabpage);
-                foreach (string lin in linur)
-                {
-                    listView1.Items.Add(lin);
-                }
-                FyllaListView("Medlimur");
+
+                FyllaListView(tafla);
 
             }
             catch (Exception ex)
@@ -230,6 +234,7 @@ namespace dub16_Control
 
         private void bt_breytaMedlim_Click(object sender, EventArgs e)
         {
+            
             string med_id = tb_breytaMedlimID.Text;
             string med_nafn = tb_breytaMedlimNafn.Text;
             string med_kt = tb_breytaMedlimKennitala.Text;
@@ -243,6 +248,7 @@ namespace dub16_Control
 
                 MessageBox.Show(ex.ToString());
             }
+            Refresh(tabpage);
         }
 
         private void bt_nySkraning_Click(object sender, EventArgs e)
@@ -257,6 +263,7 @@ namespace dub16_Control
             {
                 MessageBox.Show(ex.ToString());
             }
+            
         }
     }
 }

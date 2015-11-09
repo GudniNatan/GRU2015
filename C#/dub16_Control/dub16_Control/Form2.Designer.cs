@@ -696,6 +696,7 @@
             // 
             // listView1
             // 
+            this.listView1.AllowColumnReorder = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(269, 22);
             this.listView1.Name = "listView1";
