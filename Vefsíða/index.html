@@ -79,31 +79,29 @@
           <div class="tabs">
             <div class="tab">
               <input type="radio" id="tab-1" name="tab-group-1" checked>
-              <label for="tab-1">Sign In</label>
+              <label for="tab-1">Innskrá</label>
               <div class="content">
-                <form class="pure-form" style="padding: 10px;">
-                  <fieldset class="pure-group">
-                    <input type="text" class="pure-input-1" placeholder="Kennitala" required>
-                    <input type="password" class="pure-input-1" placeholder="Password" required pattern="^[a-zA-Z][a-zA-Z0-9-_.]{1, 20}$">
-                  </fieldset>
-                  <button type="submit" class="pure-button pure-input-1 pure-button-primary">Skrá inn</button>
+                <form id="login" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
+                <fieldset>
+                <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                </fieldset>
+                <input type="hidden" name="login"> <!-- Segir PHP kóðanum hvað á að gera -->
+                <button type="submit" class="pure-button pure-input-1 pure-button-primary">Skrá inn</button>
                 </form>
               </div>
             </div>
             <div class="tab">
               <input type="radio" id="tab-2" name="tab-group-1">
-              <label for="tab-2">Register</label>
+              <label for="tab-2">Nýskrá</label>
               <div class="content">
-                <form class="pure-form" style="padding: 10px;">
-                  <fieldset class="pure-group">
-                    <input type="text" class="pure-input-1" placeholder="Kennitala" required>
-                    <input type="password" class="pure-input-1" placeholder="Password" required pattern="^[a-zA-Z][a-zA-Z0-9-_.]{1, 20}$">
-                  </fieldset>
-                  <fieldset class="pure-group">
-                    <input type="text" class="pure-input-1" placeholder="Fullt nafn" required>
-                    <input type="password" class="pure-input-1" placeholder="Sími" required pattern="^[a-zA-Z][a-zA-Z0-9-_.]{1, 20}$">
-                  </fieldset>
-                  <button type="submit" class="pure-button pure-input-1 pure-button-primary">Nýskrá</button>
+                <form id="register" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
+                <fieldset>
+                <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                <input type="text" name="nafn" placeholder="Nafn" required>
+                <input type="text" name="simi" placeholder="Sími" required pattern="\d{7}" title="Sjö stafa símanúmer, engin bil eða bandstrik" >
+                </fieldset>
+                <input type="hidden" name="register"> 
+                <button type="submit" class="pure-button pure-input-1 pure-button-primary">Nýskrá</button>
                 </form>
               </div>
             </div>

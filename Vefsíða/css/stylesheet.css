@@ -56,3 +56,9 @@ form#dagaval{
 	text-align: center;
 	max-width: 30em;
 }
+form#login *, form#register *{
+	width: 100%;
+}
+form#login, form#register{
+	display: block;
+}
