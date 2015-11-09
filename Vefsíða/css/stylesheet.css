@@ -62,3 +62,6 @@ form#login *, form#register *{
 form#login, form#register{
 	display: block;
 }
+.contentDiv{
+	padding: 0.5em;
+}
