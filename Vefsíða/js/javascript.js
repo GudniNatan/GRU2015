@@ -14,10 +14,10 @@ $(document).ready(function(){
 
 
     //Sýna meira takki á forsíðu
-    var h = $('.mainContent p')[0].scrollHeight;
     var hidden = true;
 
     $('.more').click(function(e) {
+        var h = $('.mainContent p')[0].scrollHeight;
         e.stopPropagation();
         if (hidden == true) {
             $('.mainContent p').animate({
@@ -33,6 +33,7 @@ $(document).ready(function(){
             hidden = true;
             $('.more').text("Sýna meira...");
         };
+        $('.mainContent p').toggleClass("textSolid").toggleClass("textGradient");
     });
 });
 

@@ -107,9 +107,17 @@ article{
 .mainContent p{
 	height: 3.5em;
 	overflow: hidden;
-
-	-webkit-border-image: -webkit-linear-gradient(top, rgba(255,255,255,0), white);
-	border-bottom: 1em;
+	margin-bottom: 1em;
+}
+.textGradient{
+	background: -webkit-linear-gradient(black, #eee);
+ 	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+.textSolid{
+	background: black;
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
 }
 .mainContent h1{
 	height: 1em;
