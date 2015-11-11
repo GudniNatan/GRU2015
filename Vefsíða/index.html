@@ -7,7 +7,7 @@
     <meta name="author" content="Guðni Natan Gunnarsson, Jóhann Rúnarsson, Óli Pétur Olsen">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/stilsida.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -16,7 +16,7 @@
     <nav class="custom-wrapper pure-g" id="menu">
         <div class="pure-u-1 pure-u-md-1-3">
             <div class="pure-menu">
-                <a href="../" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
+                <a href="index.html" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
                 <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
             </div>
         </div>

@@ -7,7 +7,7 @@
     <meta name="author" content="Guðni Natan Gunnarsson, Jóhann Rúnarsson, Óli Pétur Olsen">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/stilsida.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -16,7 +16,7 @@
     <nav class="custom-wrapper pure-g" id="menu">
         <div class="pure-u-1 pure-u-md-1-3">
             <div class="pure-menu">
-                <a href="../" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
+                <a href="index.html" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
                 <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
             </div>
         </div>
@@ -48,15 +48,20 @@
 			$result = $conn -> query($fyrirspurn);
 
 			while ($row = $result -> fetch()) {
-				$adgangurID[] = array($row['ID']);
+				$adgangurID[] = array($row['ID'], $row['nafn'], $row['kennitala'], $row['simi']);
 			}
 		} catch (Exception $e) {
 			echo "Bilun + $e + $fyrirspurn";
 		}
-		
+		$GLOBALS['id'] = $adgangurID[0][0];
+		$GLOBALS['nafn'] = $adgangurID[0][1];
+		$GLOBALS['kennitala'] = $adgangurID[0][2];
+		$GLOBALS['simi'] = $adgangurID[0][3];
 
+		$GLOBALS['invalidID'] = "false";
 		if (count($adgangurID) <= 0) {	//Er kennitala til í gagnagrunninum
 			echo "Kennitala Röng<br>";
+			$GLOBALS['invalidID'] = "true";
 		}
 	}
 
@@ -81,7 +86,7 @@
 
 		login($kennitala);	//Loggar inn eftir að registera
 	}
-	if (isset($_POST['addevent'])) {	//ADDEVENT
+	if (isset($_POST['addevent']) && $GLOBALS['invalidID'] != "true") {	//ADDEVENT
 		$kennitala = $_POST['kennitala'];
 
 		try {
@@ -126,7 +131,9 @@
 				$skradirVidburdir[0][1] = "n/a";
 				$skradirVidburdir[0][2] = "n/a";
 				$skradirVidburdir[0][3] = "n/a";
-				echo "Engir viðburðir skráðir á þessa kennitölu.";
+				if ($GLOBALS['invalidID'] != "true") {
+					echo "Engir viðburðir skráðir á þessa kennitölu.";
+				}
 			}
 
 			$fyrirspurn = "SELECT id , heiti FROM Vidburdur WHERE dagsetning > CURDATE()";
@@ -203,6 +210,23 @@
 			<input type="submit" value="Skrá viðburð">
 		</form>
 	</div>
+	<div id="container">
+		<div id="info">
+			<h2>Nafn</h2>
+			<p>
+				<?php echo $GLOBALS['nafn'];  ?>
+			</p>
+			<h2>Kennitala</h2>
+			<p>
+				<?php echo $GLOBALS['kennitala'];  ?>
+			</p>
+			<h2>Sími</h2>
+			<p>
+				<?php echo $GLOBALS['simi'];  ?>
+			</p>
+		</div>
+	</div>
 </main>
+
 <script src="js/javascript.js"></script>
 </body>
