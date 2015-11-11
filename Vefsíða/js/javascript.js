@@ -1,14 +1,40 @@
+//Jquery
 $(document).ready(function(){
 
+    //Notification ef villa kemur upp
 	$(".notification").click(function(){
         $(".notification").fadeOut("fast");
     });
     if ($(".notification").text().length > 1) {
     	$(".notification").css("padding", "1em");
     };
-    $( "tr:even" ).addClass("pure-table-odd");  //Önnur hver lína í töflum með dekkri bakgrunn
-});
 
+    //Önnur hver lína í töflum með dekkri bakgrunn
+    $( "tr:even" ).addClass("pure-table-odd");
+
+
+    //Sýna meira takki á forsíðu
+    var h = $('.mainContent p')[0].scrollHeight;
+    var hidden = true;
+
+    $('.more').click(function(e) {
+        e.stopPropagation();
+        if (hidden == true) {
+            $('.mainContent p').animate({
+                'height': h
+            })
+            hidden = false;
+            $('.more').text("Sýna minna...");
+        }
+        else{
+            $('.mainContent p').animate({
+               'height': '3.5em'
+            })
+            hidden = true;
+            $('.more').text("Sýna meira...");
+        };
+    });
+});
 
 //Kóði fyrir mobile nav
 (function (window, document) {

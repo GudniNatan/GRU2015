@@ -140,6 +140,11 @@ margin: 0;
     .custom-toggle {
         display: block;
     }
+    .tabs{
+      min-height: 17em;
+      max-width: 25em;
+      margin: 25px auto;
+    }
 
 }
 .main {
