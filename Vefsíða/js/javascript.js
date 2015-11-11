@@ -34,7 +34,7 @@ $(document).ready(function(){
         }
         else{
             $('.mainContent p').animate({
-               'height': '3.5em'
+               'height': '5.9em'
             })
             hidden = true;
             $('.more').text("Sýna meira...");
