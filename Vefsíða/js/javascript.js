@@ -22,7 +22,11 @@ $(document).ready(function(){
         if (hidden == true) {
             $('.mainContent p').animate({
                 'height': h
-            })
+            },{complete:function(){
+                $('.mainContent p').animate({
+                    'height': '100%'
+                })
+            }});
             hidden = false;
             $('.more').text("Sýna minna...");
         }
