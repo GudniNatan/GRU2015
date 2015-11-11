@@ -95,10 +95,18 @@ namespace dub16_Control
         {
             if (OpenConnection() == true)
             {
-                fyrirspurn = "DELETE FROM " + tafla + " where id ='" + id + "'";
-                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
-                nySQLskipun.ExecuteNonQuery();
-                CloseConnection();
+                try
+                {
+                    fyrirspurn = "DELETE FROM " + tafla + " where id ='" + id + "'";
+                    nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                    nySQLskipun.ExecuteNonQuery();
+                    CloseConnection();
+                }
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show("Ekki er hægt að eyða úr " + tafla + "töflu ef notandi er skráður á viðburð");
+                    CloseConnection();
+                }
             }
         }
 
@@ -257,11 +265,12 @@ namespace dub16_Control
         public void NySkraning(int vid_id, int med_id)
         {
             string lina = null;
+            string lina2 = null;
             int vidID = vid_id;
             int medID = med_id;
             if (OpenConnection() == true)
             {
-                fyrirspurn = "SELECT Vidburdur.ID, Medlimur.ID FROM Medlimur INNER JOIN Skraning ON  Medlimur.id = Skraning.medlimur_id INNER JOIN Vidburdur ON  Skraning.vidburdur_id = Vidburdur.ID where Medlimur.ID = '" + medID + "' and Vidburdur.ID = '" + vidID + "'";
+                fyrirspurn = "SELECT Medlimur.ID FROM Medlimur where Medlimur.ID = '" + medID + "'";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 sqllesari = nySQLskipun.ExecuteReader();
                 while (sqllesari.Read())
@@ -272,19 +281,35 @@ namespace dub16_Control
                     }
                 }
                 sqltenging.Close();
-                if (lina == string.Empty || lina == null)
+            }
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "SELECT Vidburdur.ID FROM Vidburdur where Vidburdur.ID = '" + vidID + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                sqllesari = nySQLskipun.ExecuteReader();
+                while (sqllesari.Read())
                 {
-                    MessageBox.Show("Þetta er Ekki til");//þetta er false
+                    for (int i = 0; i < sqllesari.FieldCount; i++)
+                    {
+                        lina2 += (sqllesari.GetValue(i).ToString()) + "|";
+                    }
+                }
+                sqltenging.Close();
+            }
+            if (OpenConnection() == true)
+            {
+                if (lina == string.Empty || lina == null || lina2 == string.Empty || lina2 == null)
+                {
+                    MessageBox.Show("Þetta er Ekki til A: " + lina +" B: " + lina2);//þetta er false
                 }
                 else
                 {
-                  
-                fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vidID + "','" + medID + "')";
-                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
-                nySQLskipun.ExecuteNonQuery();
-                CloseConnection();
-                
+                    fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vidID + "','" + medID + "')";
+                    nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                    nySQLskipun.ExecuteNonQuery();
+                    CloseConnection();             
                 }
+                sqltenging.Close();
             }
          }
         public void UppfaeraMedlimur(string id, string nafn, string kt, string simi)

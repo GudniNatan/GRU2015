@@ -119,7 +119,15 @@ namespace dub16_Control
                     case "Vidburdur":
                         tb_breytaVidburdiID.Text = listView1.SelectedItems[0].SubItems[0].Text;
                         tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                        tb_breytaVidburdiDagsetning.Text = listView1.SelectedItems[0].SubItems[2].Text;
+
+                        string datetime = listView1.SelectedItems[0].SubItems[2].Text;
+
+                        DateTime myDate = DateTime.ParseExact(datetime, "d.M.yyyy HH:mm:ss",
+                                       System.Globalization.CultureInfo.InvariantCulture);
+
+                        string date = myDate.ToString("yyyy-MM-dd");
+                        
+                        tb_breytaVidburdiDagsetning.Text = date;
                         break;
                     case "Skraning":
                         tb_breytaSkraninguID.Text = listView1.SelectedItems[0].SubItems[0].Text;
