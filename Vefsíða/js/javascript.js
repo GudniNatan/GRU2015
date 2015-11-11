@@ -23,9 +23,11 @@ $(document).ready(function(){
             $('.mainContent p').animate({
                 'height': h
             },{complete:function(){
-                $('.mainContent p').animate({
+                if (navigator.appVersion.indexOf("Chrome/") != -1) {
+                    $('.mainContent p').animate({
                     'height': '100%'
-                })
+                    })
+                }
             }});
             hidden = false;
             $('.more').text("Sýna minna...");

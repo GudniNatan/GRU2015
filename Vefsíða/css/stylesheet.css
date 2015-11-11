@@ -91,6 +91,7 @@ article{
 }
 .contentDiv p{
 	  display: block;
+	  max-width: 20em;
 }
 .events{
 	order: 3;
@@ -109,15 +110,17 @@ article{
 	overflow: hidden;
 	margin-bottom: 1em;
 }
-.textGradient{
-	background: -webkit-linear-gradient(black, #eee);
- 	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent;
-}
-.textSolid{
-	background: black;
-	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent;
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	.textGradient{
+		background: -webkit-linear-gradient(black, #eee);
+	 	-webkit-background-clip: text;
+	  	-webkit-text-fill-color: transparent;
+	}
+	.textSolid{
+		background: black;
+		-webkit-background-clip: text;
+	  	-webkit-text-fill-color: transparent;
+	}
 }
 .mainContent h1{
 	height: 1em;
