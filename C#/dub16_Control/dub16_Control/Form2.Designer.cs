@@ -354,6 +354,7 @@
             this.bt_breytaVidburdi.TabIndex = 6;
             this.bt_breytaVidburdi.Text = "Breyta Viðburði";
             this.bt_breytaVidburdi.UseVisualStyleBackColor = true;
+            this.bt_breytaVidburdi.Click += new System.EventHandler(this.bt_breytaVidburdi_Click);
             // 
             // tb_breytaVidburdiDagsetning
             // 
@@ -409,6 +410,7 @@
             this.bt_nyrVidburdur.TabIndex = 6;
             this.bt_nyrVidburdur.Text = "Nýr Viðburður";
             this.bt_nyrVidburdur.UseVisualStyleBackColor = true;
+            this.bt_nyrVidburdur.Click += new System.EventHandler(this.bt_nyrVidburdur_Click);
             // 
             // tb_NyrVidburdurDagsetning
             // 
@@ -696,7 +698,6 @@
             // 
             // listView1
             // 
-            this.listView1.AllowColumnReorder = true;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(269, 22);
             this.listView1.Name = "listView1";

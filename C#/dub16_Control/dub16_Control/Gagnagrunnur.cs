@@ -288,7 +288,7 @@ namespace dub16_Control
             }
          }
         public void UppfaeraMedlimur(string id, string nafn, string kt, string simi)
-            {
+        {
                 if (OpenConnection() == true)
                 {
                     fyrirspurn = "Update medlimur set id = '" + id +
@@ -299,7 +299,31 @@ namespace dub16_Control
                     CloseConnection();
                 }
 
+         }
+        public void UppfaeraVidburdur(string id, string nafn, string dagsetning)
+        {
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "Update vidburdur set id = '" + id +
+                    "', heiti='" + nafn + "',dagsetning='" + dagsetning + "' where id='" + id + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
             }
+
+        }
+        public void NyVidburdur(string nafn, string date)
+        {
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "INSERT INTO Vidburdur (heiti, dagsetning) VALUES ('" + nafn + "','" + date + "')";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+            }
+
+        }
+
 
     }
 }

@@ -16,8 +16,11 @@ namespace dub16_Control
          * Guðni Natan Gunnarsson
          * Nóvember 2015
          */
+        
+        
         Gagnagrunnur gagnagrunnur = new Gagnagrunnur();
         Form2 form2 = new Form2();
+       
         public Form1()
         {
             InitializeComponent();
@@ -53,10 +56,13 @@ namespace dub16_Control
             {
                 MessageBox.Show("Kennitala röng");
             }
+            
+                    
         }
         private void login()
         {
             string kt = tb_kennitala.Text;
+            
             form2.Form2Load(kt);
             form2.Show();
         }

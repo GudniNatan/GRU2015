@@ -178,8 +178,8 @@ namespace dub16_Control
             {
                 string id = tb_eydaID.Text;
                 gagnagrunnur.Eyda(tabpage, id);
-                listView1.Items.Clear();
-                FyllaListView(tabpage);
+                
+                
             }
             catch (Exception ex)
             {
@@ -263,7 +263,41 @@ namespace dub16_Control
             {
                 MessageBox.Show(ex.ToString());
             }
+            Refresh(tabpage);
             
+        }
+
+        private void bt_breytaVidburdi_Click(object sender, EventArgs e)
+        {
+            string id = tb_breytaVidburdiID.Text;
+            string nafn = tb_breytaVidburdiHeiti.Text;
+            string dagatal = tb_breytaVidburdiDagsetning.Text;
+            try
+            {
+                gagnagrunnur.UppfaeraVidburdur(id, nafn, dagatal);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+            Refresh(tabpage);
+
+        }
+
+        private void bt_nyrVidburdur_Click(object sender, EventArgs e)
+        {
+            string nafn = tb_nyrVidburdurHeiti.Text;
+            string date = tb_NyrVidburdurDagsetning.Text;
+            try
+            {
+                gagnagrunnur.NyVidburdur(nafn,date);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Refresh(tabpage);
         }
     }
 }
