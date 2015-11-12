@@ -633,6 +633,7 @@
             this.bt_breytaAdmin.TabIndex = 6;
             this.bt_breytaAdmin.Text = "Breyta Admin";
             this.bt_breytaAdmin.UseVisualStyleBackColor = true;
+            this.bt_breytaAdmin.Click += new System.EventHandler(this.bt_breytaAdmin_Click);
             // 
             // tb_breytaAdminMedlimurID
             // 
@@ -670,6 +671,7 @@
             this.bt_nyrAdmin.TabIndex = 6;
             this.bt_nyrAdmin.Text = "Nýr Admin";
             this.bt_nyrAdmin.UseVisualStyleBackColor = true;
+            this.bt_nyrAdmin.Click += new System.EventHandler(this.bt_nyrAdmin_Click);
             // 
             // tb_nyrAdminMedlimurID
             // 

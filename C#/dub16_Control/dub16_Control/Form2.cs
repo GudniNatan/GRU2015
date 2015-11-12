@@ -307,6 +307,42 @@ namespace dub16_Control
             }
             Refresh(tabpage);
         }
+
+        private void bt_nyrAdmin_Click(object sender, EventArgs e)
+        {
+            string id = tb_nyrAdminMedlimurID.Text;
+
+            try
+            {
+                gagnagrunnur.NyAdmin(id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                
+            }
+            
+
+            Refresh(tabpage);
+        }
+
+        private void bt_breytaAdmin_Click(object sender, EventArgs e)
+        {
+            string id = tb_breytaAdminID.Text;
+            string med_id = tb_breytaAdminMedlimurID.Text;
+
+            try
+            {
+                gagnagrunnur.UpfaeraAdmin(id, med_id);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+       
     }
 }
 
