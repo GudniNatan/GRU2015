@@ -105,7 +105,7 @@ article{
 	max-width: 45em;
 	align-items: flex-start;
 }
-.mainContent p{
+.mainContent div{
 	height: 5.9em;
 	overflow: hidden;
 	margin-bottom: 1em;

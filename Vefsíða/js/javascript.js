@@ -17,14 +17,19 @@ $(document).ready(function(){
     var hidden = true;
 
     $('.more').click(function(e) {
-        var h = $('.mainContent p')[0].scrollHeight;
+        var h = $('.mainContent div')[0].scrollHeight;
         e.stopPropagation();
         if (hidden == true) {
-            $('.mainContent p').animate({
+            $('.mainContent div').animate({
                 'height': h
             },{complete:function(){
                 if (navigator.appVersion.indexOf("Chrome/") != -1) {
-                    $('.mainContent p').animate({
+                    $('.mainContent div').animate({
+                    'height': '100%'
+                    })
+                }
+                if (navigator.appVersion.indexOf("Safari/") != -1) {
+                    $('.mainContent div').animate({
                     'height': '100%'
                     })
                 }
@@ -33,13 +38,14 @@ $(document).ready(function(){
             $('.more').text("Sýna minna...");
         }
         else{
-            $('.mainContent p').animate({
+            $('.mainContent div').animate({
                'height': '5.9em'
             })
             hidden = true;
             $('.more').text("Sýna meira...");
         };
-        $('.mainContent p').toggleClass("textSolid").toggleClass("textGradient");
+        console.log(hidden + " "  + h);
+        $('.mainContent div').toggleClass("textSolid").toggleClass("textGradient");
     });
 });
 
