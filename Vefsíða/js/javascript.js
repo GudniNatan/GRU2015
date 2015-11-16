@@ -10,7 +10,8 @@ $(document).ready(function(){
     };
 
     //Önnur hver lína í töflum með dekkri bakgrunn
-    $( "tr:odd:odd" ).addClass("pure-table-odd");
+    $( "tr#dagskra:even" ).addClass("pure-table-odd");
+    $( "tr#skraning:even" ).addClass("pure-table-odd");
     $( "tr:even" ).css("border", "1px solid rgb(203, 203, 203)");
 
 

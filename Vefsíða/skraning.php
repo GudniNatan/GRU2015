@@ -172,7 +172,7 @@
 			<tbody>
 			<?php			
 				foreach ($skradirVidburdir as $entry) {
-				 	echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td>" . $entry[3] . "</td>" . '<td><button type="submit" name="id" value="' . $entry[0] . '">Eyða</button></td></tr>
+				 	echo "<tr id='skraning'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td>" . $entry[3] . "</td>" . '<td><button type="submit" name="id" value="' . $entry[0] . '">Eyða</button></td></tr>
 	';			 	
 				 }
 			 ?>
