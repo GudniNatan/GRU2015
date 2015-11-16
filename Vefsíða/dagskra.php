@@ -61,7 +61,7 @@
     
             $result = $conn -> query($fyrirspurn);
             while ($row = $result -> fetch()) {
-                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning'], $row['ummaeli']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
             }
         }
     ?>
@@ -80,13 +80,14 @@
                 <th>ID</th>
                 <th>Viðburður</th>
                 <th>Dagur</th>
+                <th>...</th>
             </tr>
         </thead>
         <tbody>
         <?php           
             foreach ($Vidburdir as $entry) {
-                echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td></tr>
-";              
+                echo "<tr><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "'>Smella</a></td></tr>
+<td class='moreInfo' id='vidburdur" . $entry[0] . "' colspan=4><p>" . $entry[3] . "</p></td>";              
              }
          ?>
          </tbody>
