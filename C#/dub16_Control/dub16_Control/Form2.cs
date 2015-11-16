@@ -111,12 +111,14 @@ namespace dub16_Control
                 switch (tabpage)
                 {
                     case "Medlimur":
+                        tb_breytaMedlimID.Enabled = false;
                         tb_breytaMedlimID.Text = listView1.SelectedItems[0].SubItems[0].Text;
                         tb_breytaMedlimNafn.Text = listView1.SelectedItems[0].SubItems[1].Text;
                         tb_breytaMedlimKennitala.Text = listView1.SelectedItems[0].SubItems[2].Text;
                         tb_breytaMedlimSimi.Text = listView1.SelectedItems[0].SubItems[3].Text;
                         break;
                     case "Vidburdur":
+                        tb_breytaVidburdiID.Enabled = false;
                         tb_breytaVidburdiID.Text = listView1.SelectedItems[0].SubItems[0].Text;
                         tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
 
@@ -130,11 +132,13 @@ namespace dub16_Control
                         tb_breytaVidburdiDagsetning.Text = date;
                         break;
                     case "Skraning":
+                        tb_breytaSkraninguID.Enabled = false;
                         tb_breytaSkraninguID.Text = listView1.SelectedItems[0].SubItems[0].Text;
                         tb_breytaSkraninguVidburdurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
                         tb_breytaSkraninguMedlimurID.Text = listView1.SelectedItems[0].SubItems[2].Text;
                         break;
                     case "Admin":
+                        tb_breytaAdminID.Enabled = false;
                         tb_breytaAdminID.Text = listView1.SelectedItems[0].SubItems[0].Text;
                         tb_breytaAdminMedlimurID.Text = listView1.SelectedItems[0].SubItems[1].Text;
                         break;
@@ -340,6 +344,24 @@ namespace dub16_Control
 
                 MessageBox.Show(ex.ToString());
             }
+            Refresh(tabpage);
+        }
+
+        private void bt_breytaSkraningu_Click(object sender, EventArgs e)
+        {
+            string id = tb_breytaSkraninguID.Text;
+            string vid_id = tb_breytaSkraninguVidburdurID.Text;
+            string med_id = tb_breytaSkraninguMedlimurID.Text;
+            try
+            {
+                gagnagrunnur.UpfaeraSkraning(id, vid_id, med_id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                
+            }
+            Refresh(tabpage);
         }
 
        

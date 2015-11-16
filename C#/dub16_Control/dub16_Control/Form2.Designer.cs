@@ -527,6 +527,7 @@
             this.bt_breytaSkraningu.TabIndex = 6;
             this.bt_breytaSkraningu.Text = "Breyta Skráningu";
             this.bt_breytaSkraningu.UseVisualStyleBackColor = true;
+            this.bt_breytaSkraningu.Click += new System.EventHandler(this.bt_breytaSkraningu_Click);
             // 
             // groupBox6
             // 

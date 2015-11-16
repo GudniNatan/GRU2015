@@ -370,6 +370,18 @@ namespace dub16_Control
                 CloseConnection();
             }
         }
+        public void UpfaeraSkraning(string id, string vid_id, string med_id)
+        {
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "Update skraning set id = '" + id +
+                   "', vidburdur_id='" + vid_id + "', medlimur_id='" + med_id + "' where id='" + id + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+            }
+
+        }
 
     }
 }
