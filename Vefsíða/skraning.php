@@ -227,6 +227,9 @@
 		</div>
 	</div>
 </main>
-
+<footer>
+        <p>2015, Allur réttur áskilinn</p>
+        <p>Guðni Natan Gunnarsson, Óli Pétur Olsen & Jóhann Rúnarsson</p>
+</footer>
 <script src="js/javascript.js"></script>
 </body>
