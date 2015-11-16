@@ -176,12 +176,3 @@ article{
 		margin-bottom:  0;
 	}
 }
-.moreInfo{
-	display: none;
-}
-.moreInfo:target{
-    display: table-cell;
-}
-table{
-	max-width: 60em;
-}
