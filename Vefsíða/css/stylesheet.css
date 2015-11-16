@@ -1,15 +1,9 @@
-html {
-  height: 100%;
-}
 body{
 	display: flex;
 	flex-wrap: wrap;
 	max-width: 100%;
 	justify-content: center;
 	margin: 0;
-	height: 100%;
-	padding-top: 2.1em;
-	box-sizing: border-box;
 }
 form{
 	margin: 0;
@@ -67,16 +61,13 @@ div{
 	display: block;
 }
 main{
-	order: 0;
 	display: flex;
 	flex-wrap: wrap;
-	width: 100%;
+	min-width: 50%;
 	margin: 0;
 	justify-content: space-around;
-	max-width: 80em;
 	text-align: center;
-	height: 100%;
-	align-content: flex-start;
+	max-width: 80em;
 }
 form#dagaval{
 	display: flex;
@@ -145,12 +136,6 @@ article{
 #container{
 	margin: 0;
 }
-.mainContent div p{
-	padding-bottom: 1em;
-}
-.mainContent div p:last-child{
-	padding-bottom: 0;
-}
 @media (min-width: 48em) {
 
     .signInTabs{
@@ -162,6 +147,7 @@ article{
     .contentDiv{
     	max-width: 50%;
     }
+
 }
 @media (min-width: 64em) {
 	.contentDiv{
@@ -173,12 +159,6 @@ article{
 		text-align: right;
 		max-width: 80em;
 		width: 100%;
-	}
-	footer{
-		position: fixed;
-	}
-	.events{
-		padding-bottom: 5em;
 	}
 }
 
@@ -199,49 +179,9 @@ article{
 .moreInfo{
 	display: none;
 }
-.moreInfo *{
-	position: relative;
-	max-height: 0;
-	overflow: hidden;
-	z-index: -1;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-}
 .moreInfo:target{
-    display: table-row;
-}
-.moreInfo:target * {
-	max-height: 6em;
+    display: table-cell;
 }
 table{
 	max-width: 60em;
-}
-tr{
-	border-top: none;
-	border-bottom: 1px solid rgb(203, 203, 203);
-}
-footer{
-	text-align: center;
-	margin-top: 3em;
-	min-height: 4em;
-	padding: 1em;
-	border-top: 1px solid rgb(203, 203, 203);
-	border-bottom: 1px solid rgb(203, 203, 203);
-	order: 999;
-    background-color: rgb(240, 240, 240);
-	bottom:0;
-	left:0;
-	width: 100%;
-	display: inline-flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	box-sizing: border-box;
-}
-footer p{
-	display: inline-block;
-	width: 100%;
 }

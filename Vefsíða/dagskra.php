@@ -13,7 +13,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
-<main>
     <nav class="custom-wrapper pure-g" id="menu">
         <div class="pure-u-1 pure-u-md-1-3">
             <div class="pure-menu">
@@ -49,11 +48,11 @@
     
             $result = $conn -> query($fyrirspurn);
             while ($row = $result -> fetch()) {
-                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning'], $row['ummaeli']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
             }
 
             if (count($Vidburdir) < 1) {
-                $Vidburdir[] = array("n/a", "n/a", "n/a", "n/a");
+                $Vidburdir[] = array("n/a", "n/a", "n/a");
                 echo "Engir viðburðir skráðir á þessu tímabili.";
             }
         }
@@ -67,6 +66,7 @@
         }
     ?>
 </p>
+<main>
     <form id="dagaval" class="pure-form" action="dagskra.php" method="post">
         <h2>Skoða dagskrá á völdu sviði</h2>
         <p>Frá:   <input type="date" name="fyrstiDagur" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"></p>
@@ -87,17 +87,14 @@
         <?php           
             foreach ($Vidburdir as $entry) {
                 echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "'>Smella</a></td></tr>
-<tr class='moreInfo' id='vidburdur" . $entry[0] . "'><td style='padding: 0;' colspan=4><p><b>" . $entry[3] . "</b></p></td></tr>";              
+<tr><td class='moreInfo' id='vidburdur" . $entry[0] . "' colspan=4><p>" . $entry[3] . "</p></td></tr>";              
              }
          ?>
          </tbody>
     </table>
-
-    <footer>
-        <p>2015, Allur réttur áskilinn</p>
-        <p>Guðni Natan Gunnarsson, Óli Pétur Olsen & Jóhann Rúnarsson</p>
-    </footer>
 </main>
+
+
     <script type="text/javascript" src="js/javascript.js"></script>
 </body>
 </html>

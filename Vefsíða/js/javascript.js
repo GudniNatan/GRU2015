@@ -46,6 +46,7 @@ $(document).ready(function(){
             hidden = true;
             $('.more').text("Sýna meira...");
         };
+        console.log(hidden + " "  + h);
         $('.mainContent div').toggleClass("textSolid").toggleClass("textGradient");
     });
 });
