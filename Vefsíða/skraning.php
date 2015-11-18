@@ -25,7 +25,7 @@
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Forsíða</a></li>
                     <li class="pure-menu-item"><a href="dagskra.php" class="pure-menu-link">Dagskrá</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Myndir</a></li>
+                    <li class="pure-menu-item"><a href="myndir.html" class="pure-menu-link">Myndir</a></li>
                     <li class="pure-menu-item"><a href="umokkur.html" class="pure-menu-link">Um okkur</a></li>
                 </ul>
             </div>
@@ -226,10 +226,10 @@
 			</p>
 		</div>
 	</div>
+	<footer>
+	        <p>2015, Allur réttur áskilinn</p>
+	        <p>Guðni Natan Gunnarsson, Óli Pétur Olsen & Jóhann Rúnarsson</p>
+	</footer>
 </main>
-<footer>
-        <p>2015, Allur réttur áskilinn</p>
-        <p>Guðni Natan Gunnarsson, Óli Pétur Olsen & Jóhann Rúnarsson</p>
-</footer>
 <script src="js/javascript.js"></script>
 </body>

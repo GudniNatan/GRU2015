@@ -13,6 +13,7 @@ body{
 }
 form{
 	margin: 0;
+	margin-bottom: 2em;
 	display: inline-block;
 }
 div:not(.pure-menu)div:not(.pure-u-1), body, h1, h2, h3, h4, p, form{
@@ -55,6 +56,7 @@ fieldset input{
 	padding: 1em;
 	border-radius: 1em;
 	right: 0;
+	margin: 0 3.5em;
 }
 #info h2{
 	border-bottom: 1px solid black;
@@ -97,10 +99,18 @@ article{
 	margin: 0;
 	justify-content: space-around;
 	text-align: center;
+	margin: 0 auto;
+}
+article h1{
+	padding: 0;
 }
 .contentDiv p{
 	  display: block;
 	  max-width: 20em;
+}
+.contentDiv{
+	  padding: 0.5em;
+	  box-sizing:border-box;
 }
 .events{
 	order: 3;
@@ -115,7 +125,7 @@ article{
 	align-items: flex-start;
 }
 .mainContent div{
-	height: 5.9em;
+	height: 6.5em;
 	overflow: hidden;
 	margin-bottom: 1em;
 }
@@ -201,9 +211,7 @@ article{
 }
 .moreInfo *{
 	position: relative;
-	max-height: 0;
 	overflow: hidden;
-	z-index: -1;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
@@ -214,7 +222,7 @@ article{
     display: table-row;
 }
 .moreInfo:target * {
-	max-height: 6em;
+	max-height: 100em;
 }
 table{
 	max-width: 60em;
@@ -222,6 +230,9 @@ table{
 tr{
 	border-top: none;
 	border-bottom: 1px solid rgb(203, 203, 203);
+}
+img{
+	max-width: 100%;
 }
 footer{
 	text-align: center;
@@ -244,4 +255,77 @@ footer{
 footer p{
 	display: inline-block;
 	width: 100%;
+}
+iframe{
+	width: 80%;
+	max-width: 35em;
+	height: 20em;
+	max-height: auto;
+}
+
+
+
+/* SLIDESHOW CSS */
+
+
+.slideshowimage#hidden{
+    opacity: 0;
+    position: absolute;
+   	max-height: 0;
+}
+.slideshowimage#visible{
+	opacity: 1;
+	position: relative;
+	top: 0;
+}
+#slideshowcontainer div button{
+	width: 8em;
+	height: 3em;
+}
+.slideshowimage{
+	margin: 0;
+    max-width: 100%;
+    height: auto;
+	-webkit-transition: opacity 1s; /* Safari */
+    transition: opacity 1s;
+}
+.not-top{
+	top: 0;
+	right: 0;
+}
+
+#slideshow{
+    margin: 0 auto;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    -webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+}
+#slideshowcontainer div{
+	text-align: center;
+	margin: 1em;
+}
+#slideshowcontainer div a{
+	color: white;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	cursor: pointer;
+	/* use background to simulate buttons */
+	display: inline-block;
+	line-height: 25px;
+	width: 25px;
+	height: 25px;
+	border: 0.12em solid gray;
+	background-color: gray;
+	border-radius: 100%;
+}
+#slideshowcontainer div a:hover {
+	background: radial-gradient(white, gray, gray);
+	color: black;
+}
+#slideshowcontainer div a#current {
+	background: radial-gradient(white, rgba(0,0,0,0.75));
+	color: black;
 }

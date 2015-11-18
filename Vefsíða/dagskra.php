@@ -26,7 +26,7 @@
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Forsíða</a></li>
                     <li class="pure-menu-item"><a href="dagskra.php" class="pure-menu-link">Dagskrá</a></li>
-                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Myndir</a></li>
+                    <li class="pure-menu-item"><a href="myndir.html" class="pure-menu-link">Myndir</a></li>
                     <li class="pure-menu-item"><a href="umokkur.html" class="pure-menu-link">Um okkur</a></li>
                 </ul>
             </div>
@@ -73,26 +73,27 @@
         <p>Til:   <input type="date" name="seinastiDagur" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"></p>
         <input type="submit" value="Velja Dagsetningar">
     </form>
-    <h1>Dagskrá á döfinni</h1>
-    <table class="pure-table" style="width: 100%">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Viðburður</th>
-                <th>Dagur</th>
-                <th>...</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php           
-            foreach ($Vidburdir as $entry) {
-                echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "'>Smella</a></td></tr>
-<tr class='moreInfo' id='vidburdur" . $entry[0] . "'><td style='padding: 0;' colspan=4><p><b>" . $entry[3] . "</b></p></td></tr>";              
-             }
-         ?>
-         </tbody>
-    </table>
-
+    <article>
+        <h1>Dagskrá á döfinni</h1>
+        <table class="pure-table" style="width: 100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Viðburður</th>
+                    <th>Dagur</th>
+                    <th>...</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php           
+                foreach ($Vidburdir as $entry) {
+                    echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "'>Smella</a></td></tr>
+<tr class='moreInfo' id='vidburdur" . $entry[0] . "'><td colspan=4><p><b>" . $entry[3] . "</b></p></td></tr>";              
+                 }
+             ?>
+             </tbody>
+        </table>
+    </article>
     <footer>
         <p>2015, Allur réttur áskilinn</p>
         <p>Guðni Natan Gunnarsson, Óli Pétur Olsen & Jóhann Rúnarsson</p>
