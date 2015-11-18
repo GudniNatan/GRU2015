@@ -262,6 +262,17 @@ namespace dub16_Control
             }
             return false;
         }
+        public void NyAdmin(string id)
+        {
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "INSERT INTO Admin (medlimur_ID) VALUES ('" + id + "')";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+            }
+
+        }
         public void NySkraning(int vid_id, int med_id)
         {
             string lina = null;
@@ -348,7 +359,29 @@ namespace dub16_Control
             }
 
         }
+        public void UpfaeraAdmin(string id,string med_id)
+        {
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "Update admin set id = '" + id +
+                    "', medlimur_id='" + med_id+ "' where id='" + id + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+            }
+        }
+        public void UpfaeraSkraning(string id, string vid_id, string med_id)
+        {
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "Update skraning set id = '" + id +
+                   "', vidburdur_id='" + vid_id + "', medlimur_id='" + med_id + "' where id='" + id + "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+            }
 
+        }
 
     }
 }

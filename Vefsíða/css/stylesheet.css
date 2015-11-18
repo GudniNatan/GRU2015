@@ -307,6 +307,9 @@ iframe{
 	text-align: center;
 	margin: 1em;
 }
+#slideshowcontainer {
+	width: 100%;
+}
 #slideshowcontainer div a{
 	color: white;
 	margin-left: 0.5em;

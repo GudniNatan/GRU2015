@@ -148,7 +148,7 @@ function lastimage () {
 function changeimage(){
     for (var i = 0; i < img.length; i++) {
         if (i == imgnumber) {
-            img[i].style.maxHeight = "30em";
+            img[i].style.maxHeight = "40em";
             img[i].id = "visible";
         }
         else{
