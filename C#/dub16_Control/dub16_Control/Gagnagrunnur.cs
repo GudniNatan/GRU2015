@@ -28,9 +28,9 @@ namespace dub16_Control
 
         public void TengingVidGagnagrunn()
         {
-            server = "tsuts.tskoli.is";
-            database = "1803982879_dub16";
-            uid = "1803982879";
+            server = "82.148.66.15";
+            database = "GRU_H6_dub16";
+            uid = "GRU_H6";
             password = "mypassword";
 
             tengistrengur = "server=" + server + ";userid=" + uid + ";password=" + password + ";database=" + database;
