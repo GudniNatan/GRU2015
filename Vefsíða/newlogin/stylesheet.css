@@ -1,0 +1,26 @@
+html {
+  height: 100%;
+}
+body{
+	background-image: url("smallbackground.jpg");
+	background-position: top center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	max-height: 100%;
+	margin: 0;
+}
+main{
+	display: flex;
+	align-items: flex-end;
+	height: 100%;
+	margin-bottom: -9em;
+}
+@media (min-width: 48em) {
+
+    body{
+    	background-image: url("background.jpg");
+    	background-repeat: repeat-y;
+    }
+}

@@ -74,6 +74,7 @@ margin: 0;
     -webkit-font-smoothing: antialiased;
     height: 2.1em;
     overflow: hidden;
+    z-index: 100;
     -webkit-transition: height 0.5s;
     -moz-transition: height 0.5s;
     -ms-transition: height 0.5s;
