@@ -18,14 +18,14 @@
 	<nav class="custom-wrapper pure-g" id="menu">
         <div class="pure-u-1 pure-u-md-1-3">
             <div class="pure-menu">
-                <a href="index.html" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
+                <a href="index.php" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
                 <a href="#" class="custom-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
             </div>
         </div>
         <div class="pure-u-1 pure-u-md-1-3">
             <div class="pure-menu pure-menu-horizontal custom-can-transform">
                 <ul class="pure-menu-list">
-                    <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Forsíða</a></li>
+                    <li class="pure-menu-item"><a href="index.php" class="pure-menu-link">Forsíða</a></li>
                     <li class="pure-menu-item"><a href="dagskra.php" class="pure-menu-link">Dagskrá</a></li>
                     <li class="pure-menu-item"><a href="myndir.html" class="pure-menu-link">Myndir</a></li>
                     <li class="pure-menu-item"><a href="umokkur.html" class="pure-menu-link">Um okkur</a></li>
@@ -42,7 +42,7 @@
         include 'dbcon.php';
         
         try {
-            $fyrirspurn = "SELECT heiti, dagsetning, ummaeli, myndURL, id FROM Vidburdur WHERE dagsetning > CURDATE() ORDER BY dagsetning";
+            $fyrirspurn = "SELECT heiti, dagsetning, ummaeli, myndURL, id FROM Vidburdur WHERE dagsetning > CURDATE() ORDER BY dagsetning LIMIT 4";
 
             $result = $conn -> query($fyrirspurn);
             while ($row = $result -> fetch()) {
