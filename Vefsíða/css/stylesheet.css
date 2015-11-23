@@ -44,7 +44,7 @@ fieldset input{
 .notification{
 	background-color: green;
 	color: white;
-	width: 100%;
+	width: 95%;
 	text-align: center;
 	height: auto;
 	background-image: url(../img/x.png);
@@ -52,6 +52,7 @@ fieldset input{
     background-repeat: no-repeat;
     background-size: auto 40%;
     border-radius: 1em;
+    margin: 0.5em 0;
 }
 #info{
 	background-color: lightgray;
@@ -90,6 +91,9 @@ form#dagaval{
 	justify-content: space-around;
 	text-align: center;
 	max-width: 30em;
+}
+form#dagaval *{
+	margin: 0.25em 0;
 }
 form#login *, form#register *{
 	width: 100%;
@@ -133,9 +137,11 @@ article h1{
 	overflow: hidden;
 	margin-bottom: 1em;
 }
+
+/* BARA WEBKIT (Chrome og Safari) */
 @media screen and (-webkit-min-device-pixel-ratio:0) { 
 	.textGradient{
-		background: -webkit-linear-gradient(black, #eee);
+		background: -webkit-linear-gradient(black, rgba(255,255,255,0.5));
 	 	-webkit-background-clip: text;
 	  	-webkit-text-fill-color: transparent;
 	}
@@ -145,6 +151,8 @@ article h1{
 	  	-webkit-text-fill-color: transparent;
 	}
 }
+
+/* Index síða (meira og minna) */
 .mainContent h1{
 	height: 1em;
 }
@@ -344,9 +352,9 @@ body, main {
 }
 
 body{
+	background-color: #1f6684;	/* BREYTA ÞESSU EF SKIPT ER UM BAKGRUNN*/
 	background-image: url("../img/smallbackground.jpg");
 	background-position: top center;
-	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: 0;
@@ -361,6 +369,5 @@ main{
 
     body{
     	background-image: url("../img/background.jpg");
-    	background-repeat: repeat-y;
     }
 }

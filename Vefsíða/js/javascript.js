@@ -7,6 +7,9 @@ $(document).ready(function(){
     });
     if ($(".notification").text().length > 1) {
     	$(".notification").css("padding", "1em");
+    }
+    else{
+        $(".notification").css("display", "none");
     };
 
     //Önnur hver lína í töflum með dekkri bakgrunn

@@ -71,7 +71,7 @@
         <h2>Skoða dagskrá á völdu sviði</h2>
         <p>Frá:   <input type="date" name="fyrstiDagur" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"></p>
         <p>Til:   <input type="date" name="seinastiDagur" value="<?php echo date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>"></p>
-        <input type="submit" value="Velja Dagsetningar">
+        <input type="submit" class="pure-button" value="Velja Dagsetningar">
     </form>
     <article>
         <h1>Dagskrá á döfinni</h1>

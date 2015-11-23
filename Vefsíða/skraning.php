@@ -35,15 +35,17 @@
             </div>
         </div>
     </nav>
+<main>
 <p class="notification">
 <?php
 	include "dbcon.php";
+	mysqli_report(MYSQLI_REPORT_STRICT);
 
 	function login($kennitala){
 		include "dbcon.php";
 		$adgangurID = array();
 
-		$fyrirspurn = "SELECT * FROM Medlimur WHERE kennitala = '" . $kennitala . "'";
+		$fyrirspurn = "SELECT ID, nafn, kennitala, simi FROM Medlimur WHERE kennitala = '" . $kennitala . "'";
 		try {
 			$result = $conn -> query($fyrirspurn);
 
@@ -55,9 +57,8 @@
 		}
 		$GLOBALS['id'] = $adgangurID[0][0];
 		$GLOBALS['nafn'] = $adgangurID[0][1];
-		$GLOBALS['kennitala'] = $adgangurID[0][2];
+		$GLOBALS['kennitala1'] = $adgangurID[0][2];
 		$GLOBALS['simi'] = $adgangurID[0][3];
-
 		$GLOBALS['invalidID'] = "false";
 		if (count($adgangurID) <= 0) {	//Er kennitala til í gagnagrunninum
 			echo "Kennitala Röng<br>";
@@ -68,6 +69,7 @@
 	if (isset($_POST['login'])) {	//LOGIN
 		$kennitala =  $_POST['kennitala'];
 		login($kennitala);
+		
 	}
 
 	if (isset($_POST['register'])) {	//REGISTER
@@ -75,8 +77,15 @@
 		$kennitala = $_POST['kennitala'];
 		$nafn = $_POST['nafn'];
 		$simi = $_POST['simi'];
+		$lykilord = $_POST['lykilord'];
 
-		$fyrirspurn = "INSERT INTO Medlimur(nafn, kennitala, simi) VALUES ('" . $nafn . "', '" . $kennitala . "', '" . $simi ."')";
+		$cost = 10;
+		$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+		$salt = sprintf("$2a$%02d$", $cost) . $salt;
+		$hash = crypt($lykilord, $salt);
+
+
+		$fyrirspurn = "INSERT INTO Medlimur(nafn, kennitala, simi, lykilord) VALUES ('" . $nafn . "', '" . $kennitala . "', '" . $simi ."', '" . $hash . "')";
 		try {
 			$conn->exec($fyrirspurn);
 
@@ -88,6 +97,7 @@
 	}
 	if (isset($_POST['addevent']) && $GLOBALS['invalidID'] != "true") {	//ADDEVENT
 		$kennitala = $_POST['kennitala'];
+		login($kennitala);
 
 		try {
 
@@ -106,6 +116,8 @@
 		}
 	}
 	if (isset($_POST['delevent'])) {	//DELEVENT
+		$kennitala = $_POST['kennitala'];
+		login($kennitala);
 		$id =  $_POST['id'];
 		try {
 			$sql="DELETE FROM Skraning WHERE id='$id'";
@@ -114,51 +126,96 @@
 			echo "Bilaði + $e";
 		}
 	}
-	try {		
+	try {
 		$skradirVidburdir = array();
 
 		if (isset($_POST['kennitala'])) {
 			$kennitala = $_POST['kennitala'];
 
-			$fyrirspurn = "SELECT Skraning.ID AS ID, Skraning.vidburdur_id AS vidburdur_id, Skraning.medlimur_id AS medlimur_id, Vidburdur.heiti as heiti, Vidburdur.dagsetning AS dagsetning FROM Skraning INNER JOIN Vidburdur ON Vidburdur.id = Skraning.vidburdur_id  INNER JOIN Medlimur ON Medlimur.id =  Skraning.medlimur_id WHERE Medlimur.kennitala = '" . $kennitala . "'";
+			if (isset($_POST['lykilord'])) {
+				$lykilord =  $_POST['lykilord'];
+				$sth = $conn->prepare('
+				SELECT lykilord as hash
+				FROM medlimur
+				WHERE kennitala = :username
+				LIMIT 1
+				');
 
-			$result = $conn -> query($fyrirspurn);
-			while ($row = $result -> fetch()) {
-				$skradirVidburdir[] = array($row['ID'], $row['vidburdur_id'], $row['heiti'], $row['dagsetning']);	//Breyta þessu ef við bætum við fleiri skráningarhlutum
-			}
-			if (count($skradirVidburdir) < 1) {
-				$skradirVidburdir[0][0] = "n/a";
-				$skradirVidburdir[0][1] = "n/a";
-				$skradirVidburdir[0][2] = "n/a";
-				$skradirVidburdir[0][3] = "n/a";
-				if ($GLOBALS['invalidID'] != "true") {
-					echo "Engir viðburðir skráðir á þessa kennitölu.";
+				$sth->bindParam(':username', $kennitala);
+
+				$sth->execute();
+
+				$user = $sth->fetch(PDO::FETCH_OBJ);
+
+				$cost = 10;
+				$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+				$salt = sprintf("$2a$%02d$", $cost) . $salt;
+				$hash = crypt($lykilord, $salt);
+
+				if(!function_exists('hash_equals'))
+				{
+				    function hash_equals($str1, $str2)
+				    {
+				        if(strlen($str1) != strlen($str2))
+				        {
+				            return false;
+				        }
+				        else
+				        {
+				            $res = $str1 ^ $str2;
+				            $ret = 0;
+				            for($i = strlen($res) - 1; $i >= 0; $i--)
+				            {
+				                $ret |= ord($res[$i]);
+				            }
+				            return !$ret;
+				        }
+				    }
+				}
+				// Hashing the password with its hash as the salt returns the same hash
+				if ( hash_equals($user->hash, crypt($lykilord, $user->hash)) ) {
+			  		$fyrirspurn = "SELECT Skraning.ID AS ID, Skraning.vidburdur_id AS vidburdur_id, Skraning.medlimur_id AS medlimur_id, Vidburdur.heiti as heiti, Vidburdur.dagsetning AS dagsetning FROM Skraning INNER JOIN Vidburdur ON Vidburdur.id = Skraning.vidburdur_id  INNER JOIN Medlimur ON Medlimur.id =  Skraning.medlimur_id WHERE Medlimur.kennitala = '" . $kennitala . "'";
+					$result = $conn -> query($fyrirspurn);
+					while ($row = $result -> fetch()) {
+						$skradirVidburdir[] = array($row['ID'], $row['vidburdur_id'], $row['heiti'], $row['dagsetning']);	//Breyta þessu ef við bætum við fleiri skráningarhlutum
+					}
+
+					$fyrirspurn = "SELECT id , heiti FROM Vidburdur WHERE dagsetning > CURDATE()";
+					$result = $conn -> query($fyrirspurn);
+					while ($row = $result -> fetch()) {
+						$allirVidburdir[] = array($row['id'], $row['heiti']);	//Breyta þessu ef við bætum við fleiri skráningarhlutum
+					}
+				}
+				else{
+					echo "Rangt lykilorð eða kennitala. <a href='index.php'>Reyna aftur?</a>";
+					$GLOBALS['invalidID'] = "true";
 				}
 			}
-
-			$fyrirspurn = "SELECT id , heiti FROM Vidburdur WHERE dagsetning > CURDATE()";
-
-			$result = $conn -> query($fyrirspurn);
-			while ($row = $result -> fetch()) {
-				$allirVidburdir[] = array($row['id'], $row['heiti']);	//Breyta þessu ef við bætum við fleiri skráningarhlutum
+			else{
+				echo "Fann ekkert lykilorð. ";
 			}
 
 		}
 		else{
-			echo "Fann ekki kennnitölu. Ertu skráð/ur inn?";
+			echo "Fann ekki kennnitölu. Ertu skráð/ur inn? ";
 		}
-		
+		if (count($skradirVidburdir) < 1) {
+			$skradirVidburdir[0][0] = "n/a";
+			$skradirVidburdir[0][1] = "n/a";
+			$skradirVidburdir[0][2] = "n/a";
+			$skradirVidburdir[0][3] = "n/a";
+			if ($GLOBALS['invalidID'] != "true") {
+				echo "Engir viðburðir skráðir.";
+			}
+		}
 	} catch (Exception $e) {
 		echo 'Bilaði';
 	}
 ?>
 </p>
-<main>
 	<div>
 	<h2>Viðburðir sem þú ert skráð/ur á:</h2>
 	 <form  class="pure-form" method="post" action="skraning.php" id="medlimur">
-		<input type="hidden" name="delevent">
-		<input type="hidden" name="login">
 		<table class="pure-table">
 			<thead>
 				<tr>
@@ -185,6 +242,14 @@
 	';
 				}
 		?>
+		<?php
+				if (isset($_POST['lykilord'])) {
+						$kennitala = $_POST['lykilord'];
+						echo '<input type="hidden" name="lykilord" ' . 'value="' . $lykilord . '">
+		';
+				}
+		?>
+		<input type="hidden" name="delevent">
 	</form>
 	</div>
 	<div>
@@ -196,6 +261,13 @@
 				if (isset($_POST['kennitala'])) {
 						$kennitala = $_POST['kennitala'];
 						echo '<input type="hidden" name="kennitala" ' . 'value="' . $kennitala . '">
+		';
+				}
+			?>
+			<?php
+				if (isset($_POST['lykilord'])) {
+						$kennitala = $_POST['lykilord'];
+						echo '<input type="hidden" name="lykilord" ' . 'value="' . $lykilord . '">
 		';
 				}
 			?>
@@ -218,7 +290,7 @@
 			</p>
 			<h2>Kennitala</h2>
 			<p>
-				<?php echo $GLOBALS['kennitala'];  ?>
+				<?php echo $GLOBALS['kennitala1'];  ?>
 			</p>
 			<h2>Sími</h2>
 			<p>

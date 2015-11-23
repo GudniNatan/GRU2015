@@ -10,7 +10,6 @@
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="css/stilsida.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 <body>
@@ -95,6 +94,7 @@
                     <form id="login" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
                         <fieldset>
                             <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                            <input type="password" name="lykilord" placeholder="Lykilorð" required title="Lykilorð">
                         </fieldset>
                         <input type="hidden" name="login"> <!-- Segir PHP kóðanum hvað á að gera -->
                         <button type="submit" class="pure-button pure-input-1 pure-button-primary">Skrá inn</button>
@@ -108,6 +108,7 @@
                     <form id="register" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
                         <fieldset>
                             <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                            <input type="password" name="lykilord" placeholder="Lykilorð" required title="Lykilorð">
                             <input type="text" name="nafn" placeholder="Nafn" required>
                             <input type="text" name="simi" placeholder="Sími" required pattern="\d{7}" title="Sjö stafa símanúmer, engin bil eða bandstrik" >
                         </fieldset>

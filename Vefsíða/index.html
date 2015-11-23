@@ -83,6 +83,7 @@
                     <form id="login" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
                         <fieldset>
                             <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                            <input type="password" name="lykilord" placeholder="Lykilorð" required pattern="" title="Lykilorð">
                         </fieldset>
                         <input type="hidden" name="login"> <!-- Segir PHP kóðanum hvað á að gera -->
                         <button type="submit" class="pure-button pure-input-1 pure-button-primary">Skrá inn</button>
@@ -96,6 +97,7 @@
                     <form id="register" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
                         <fieldset>
                             <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                            <input type="password" name="lykilord" placeholder="Lykilorð" required pattern="" title="Lykilorð">
                             <input type="text" name="nafn" placeholder="Nafn" required>
                             <input type="text" name="simi" placeholder="Sími" required pattern="\d{7}" title="Sjö stafa símanúmer, engin bil eða bandstrik" >
                         </fieldset>
