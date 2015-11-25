@@ -35,7 +35,7 @@ namespace dub16_Control
                 MessageBox.Show(ex.ToString());
             }
         }
-        public void Form2Load(string kt) //Þegar Form2 er sýnt
+        public void Form2Load(string kt, string pw) //Þegar Form2 er sýnt
         {
             notandi = kt;
             lb_notandi.Text = "Notandi: " + kt;
@@ -208,9 +208,10 @@ namespace dub16_Control
             string nafn = tb_nyrMedlimurNafn.Text;
             string kt = tb_nyrMedlimurKennitala.Text;
             string simi = tb_nyrMedlimurSimi.Text;
+            string lykilord = tb_nyrMedlimurLykilord.Text;
             try
             {
-                gagnagrunnur.NyrMedlimur(nafn, kt, simi);
+                gagnagrunnur.NyrMedlimur(nafn, kt, simi, lykilord);
 
             }
             catch (Exception ex)

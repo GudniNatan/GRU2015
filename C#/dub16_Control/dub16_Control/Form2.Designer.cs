@@ -41,6 +41,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_nyrMedlimurLykilord = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.bt_nyrMedlimur = new System.Windows.Forms.Button();
             this.tb_nyrMedlimurSimi = new System.Windows.Forms.TextBox();
             this.tb_nyrMedlimurKennitala = new System.Windows.Forms.TextBox();
@@ -230,6 +232,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tb_nyrMedlimurLykilord);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.bt_nyrMedlimur);
             this.groupBox1.Controls.Add(this.tb_nyrMedlimurSimi);
             this.groupBox1.Controls.Add(this.tb_nyrMedlimurKennitala);
@@ -244,9 +248,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bæta við meðlim";
             // 
+            // tb_nyrMedlimurLykilord
+            // 
+            this.tb_nyrMedlimurLykilord.Location = new System.Drawing.Point(93, 116);
+            this.tb_nyrMedlimurLykilord.Name = "tb_nyrMedlimurLykilord";
+            this.tb_nyrMedlimurLykilord.Size = new System.Drawing.Size(100, 20);
+            this.tb_nyrMedlimurLykilord.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(16, 119);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(43, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Lykilorð";
+            // 
             // bt_nyrMedlimur
             // 
-            this.bt_nyrMedlimur.Location = new System.Drawing.Point(63, 130);
+            this.bt_nyrMedlimur.Location = new System.Drawing.Point(63, 142);
             this.bt_nyrMedlimur.Name = "bt_nyrMedlimur";
             this.bt_nyrMedlimur.Size = new System.Drawing.Size(89, 23);
             this.bt_nyrMedlimur.TabIndex = 6;
@@ -857,5 +877,7 @@
         private System.Windows.Forms.Button bt_nyrAdmin;
         private System.Windows.Forms.Button bt_refresh;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TextBox tb_nyrMedlimurLykilord;
+        private System.Windows.Forms.Label label13;
     }
 }

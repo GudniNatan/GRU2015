@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CryptSharp;
 
 namespace dub16_Control
 {
     public partial class Form1 : Form
     {
         /*
-         * Guðni Natan Gunnarsson
+         * Guðni Natan Gunnarsson, Jóhann Rúnarsson
          * Nóvember 2015
          */
         
@@ -55,6 +56,14 @@ namespace dub16_Control
             else
             {
                 MessageBox.Show("Kennitala röng");
+                if (gagnagrunnur.IsAdmin(kt))
+                {
+                    login();
+                }
+                else
+                {
+                    MessageBox.Show("Ekki admin");
+                }
             }
             
                     
@@ -62,9 +71,18 @@ namespace dub16_Control
         private void login()
         {
             string kt = tb_kennitala.Text;
+            string pw = tb_lykilord.Text;
+
+            if (gagnagrunnur.Login(kt, pw))
+            {
+                form2.Form2Load(kt, pw);
+                form2.Show();
+            }
+            else
+            {
+                MessageBox.Show("Rangt lykilorð");
+            }
             
-            form2.Form2Load(kt);
-            form2.Show();
         }
 
         

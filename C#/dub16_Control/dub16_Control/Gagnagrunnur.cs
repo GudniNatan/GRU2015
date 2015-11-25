@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using System.Security.Cryptography;
+using CryptSharp;
 
 namespace dub16_Control
 {
@@ -36,6 +37,53 @@ namespace dub16_Control
             tengistrengur = "server=" + server + ";userid=" + uid + ";password=" + password + ";database=" + database;
 
             sqltenging = new MySqlConnection(tengistrengur);
+        }
+        public bool Login(string notandi, string lykilord)
+        {
+            try
+            {
+                string command = "SELECT kennitala, lykilord FROM medlimur WHERE kennitala = @notandi";
+                // CONNECTION DETAILS
+                sqltenging.Open();
+
+                // COMMAND DETAILS
+                nySQLskipun = new MySqlCommand(command, sqltenging);
+
+                // PARAMETERS
+                nySQLskipun.Parameters.AddWithValue("@notandi", notandi);
+
+                // CHECK DETAILS               
+                sqllesari = nySQLskipun.ExecuteReader();
+                if (!sqllesari.Read())
+                {
+                    //No user found
+                    MessageBox.Show("Röng kennitala");
+                }
+                else
+                {
+                    string dbPassword = sqllesari.GetString(1);
+                    if (ValidateUser(lykilord, dbPassword))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                sqllesari.Close();
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("MySQL Error - Code AHx004: " + ex.Message);
+                sqltenging.Close();
+            }
+            return false;
+        }
+        public bool ValidateUser(string submittedPassword, string passwordFromDB)
+        {
+            return Crypter.CheckPassword(submittedPassword, passwordFromDB);
         }
         public void SettInnSqlToflu(string notandi, string heiti)
         {
@@ -69,11 +117,15 @@ namespace dub16_Control
             }
         }
 
-        public void NyrMedlimur(string nafn, string kt, string simi)
+        public void NyrMedlimur(string nafn, string kt, string simi, string lykilord)
         {
+            int cost = 10;
+            string salt = BlowfishCrypter.Blowfish.GenerateSalt(cost);
+            string hash = BlowfishCrypter.Blowfish.Crypt(lykilord, salt);
+
             if (OpenConnection() == true)
             {
-                fyrirspurn = "INSERT INTO Medlimur (nafn, kennitala, simi) VALUES ('" + nafn + "','" + kt + "','" + simi + "')";
+                fyrirspurn = "INSERT INTO Medlimur (nafn, kennitala, simi, lykilord) VALUES ('" + nafn + "','" + kt + "','" + simi + "', '" + hash + "')";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();
@@ -102,7 +154,7 @@ namespace dub16_Control
                     nySQLskipun.ExecuteNonQuery();
                     CloseConnection();
                 }
-                catch (MySqlException ex)
+                catch (MySqlException)
                 {
                     MessageBox.Show("Ekki er hægt að eyða úr " + tafla + "töflu ef notandi er skráður á viðburð");
                     CloseConnection();

@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CryptSharp">
+      <HintPath>\\skra\nem-redirect$\1803982879\Desktop\CryptSharp.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data">
       <HintPath>\\skra\nem-redirect$\1803982879\Documents\Visual Studio 2013\Projects\Tverk_7_Guðni\Tverk_7_Guðni\MySql.Data.dll</HintPath>
     </Reference>

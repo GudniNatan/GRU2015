@@ -126,7 +126,7 @@
 			echo "Bilaði + $e";
 		}
 	}
-	try {
+	try {	//Always
 		$skradirVidburdir = array();
 
 		if (isset($_POST['kennitala'])) {
@@ -146,11 +146,6 @@
 				$sth->execute();
 
 				$user = $sth->fetch(PDO::FETCH_OBJ);
-
-				$cost = 10;
-				$salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
-				$salt = sprintf("$2a$%02d$", $cost) . $salt;
-				$hash = crypt($lykilord, $salt);
 
 				if(!function_exists('hash_equals'))
 				{
