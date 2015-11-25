@@ -31,3 +31,4 @@ H:\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Form2.r
 H:\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Properties.Resources.resources
 H:\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.csproj.GenerateResource.Cache
 H:\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\CryptSharp.dll
+H:\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Ummaeli.resources

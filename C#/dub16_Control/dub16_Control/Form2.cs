@@ -13,14 +13,11 @@ namespace dub16_Control
     public partial class Form2 : Form
     {
         /* TODO
-         * Breyta töflu (allt)
-         * Bæta við (allt)
-         * Ekki á að vera hægt að eyða út atburði ef einhver er meðlimur er skráður á hann
-         * Ekki á að vera hægt að eyða út meðlimi ef hann er skráður á atburð
-         * Nöfn á textboxum og tökkum
+         * allt komið?
          */
         Gagnagrunnur gagnagrunnur = new Gagnagrunnur();
         string notandi;
+        public string ummaeli;
         string tabpage = "Medlimur";
 
         public Form2()
@@ -301,15 +298,26 @@ namespace dub16_Control
         private void bt_nyrVidburdur_Click(object sender, EventArgs e)
         {
             string nafn = tb_nyrVidburdurHeiti.Text;
-            string date = tb_NyrVidburdurDagsetning.Text;
+            string date = tb_nyrVidburdurDagsetning.Text;
             try
             {
-                gagnagrunnur.NyVidburdur(nafn,date);
+                DateTime myDateTime = new DateTime();
+                date = myDateTime.Date.ToString("yyyy-MM-dd");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bilaði");
+            }
+            string myndURL = tb_nyrVidburdurMyndURL.Text;
+            try
+            {
+                gagnagrunnur.NyrVidburdur(nafn,date, ummaeli, myndURL);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+            ummaeli = null;
             Refresh(tabpage);
         }
 
@@ -365,7 +373,17 @@ namespace dub16_Control
             Refresh(tabpage);
         }
 
-       
+        private void bt_ummaeli_Click(object sender, EventArgs e)
+        {
+            using (Ummaeli umform = new Ummaeli())
+            {
+                umform.GetUmmaeli(ummaeli);
+                if (umform.ShowDialog() == DialogResult.OK)
+                {
+                    ummaeli = umform.TheValue;
+                }
+            }
+        }
     }
 }
 

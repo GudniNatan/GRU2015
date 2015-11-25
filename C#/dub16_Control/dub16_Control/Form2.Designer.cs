@@ -60,8 +60,12 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.bt_ummaeli = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tb_nyrVidburdurMyndURL = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.bt_nyrVidburdur = new System.Windows.Forms.Button();
-            this.tb_NyrVidburdurDagsetning = new System.Windows.Forms.TextBox();
+            this.tb_nyrVidburdurDagsetning = new System.Windows.Forms.TextBox();
             this.tb_nyrVidburdurHeiti = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -410,8 +414,12 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.bt_ummaeli);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.tb_nyrVidburdurMyndURL);
+            this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.bt_nyrVidburdur);
-            this.groupBox4.Controls.Add(this.tb_NyrVidburdurDagsetning);
+            this.groupBox4.Controls.Add(this.tb_nyrVidburdurDagsetning);
             this.groupBox4.Controls.Add(this.tb_nyrVidburdurHeiti);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.label15);
@@ -422,9 +430,45 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Bæta við viðburð";
             // 
+            // bt_ummaeli
+            // 
+            this.bt_ummaeli.Location = new System.Drawing.Point(93, 111);
+            this.bt_ummaeli.Name = "bt_ummaeli";
+            this.bt_ummaeli.Size = new System.Drawing.Size(75, 23);
+            this.bt_ummaeli.TabIndex = 10;
+            this.bt_ummaeli.Text = "bæta við...";
+            this.bt_ummaeli.UseVisualStyleBackColor = true;
+            this.bt_ummaeli.Click += new System.EventHandler(this.bt_ummaeli_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(16, 116);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 13);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Ummæli";
+            // 
+            // tb_nyrVidburdurMyndURL
+            // 
+            this.tb_nyrVidburdurMyndURL.Location = new System.Drawing.Point(93, 87);
+            this.tb_nyrVidburdurMyndURL.Name = "tb_nyrVidburdurMyndURL";
+            this.tb_nyrVidburdurMyndURL.Size = new System.Drawing.Size(100, 20);
+            this.tb_nyrVidburdurMyndURL.TabIndex = 8;
+            this.tb_nyrVidburdurMyndURL.Text = "img/events/";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(16, 90);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 13);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "Mynd (local url)";
+            // 
             // bt_nyrVidburdur
             // 
-            this.bt_nyrVidburdur.Location = new System.Drawing.Point(63, 130);
+            this.bt_nyrVidburdur.Location = new System.Drawing.Point(63, 142);
             this.bt_nyrVidburdur.Name = "bt_nyrVidburdur";
             this.bt_nyrVidburdur.Size = new System.Drawing.Size(89, 23);
             this.bt_nyrVidburdur.TabIndex = 6;
@@ -432,12 +476,12 @@
             this.bt_nyrVidburdur.UseVisualStyleBackColor = true;
             this.bt_nyrVidburdur.Click += new System.EventHandler(this.bt_nyrVidburdur_Click);
             // 
-            // tb_NyrVidburdurDagsetning
+            // tb_nyrVidburdurDagsetning
             // 
-            this.tb_NyrVidburdurDagsetning.Location = new System.Drawing.Point(93, 61);
-            this.tb_NyrVidburdurDagsetning.Name = "tb_NyrVidburdurDagsetning";
-            this.tb_NyrVidburdurDagsetning.Size = new System.Drawing.Size(100, 20);
-            this.tb_NyrVidburdurDagsetning.TabIndex = 4;
+            this.tb_nyrVidburdurDagsetning.Location = new System.Drawing.Point(93, 61);
+            this.tb_nyrVidburdurDagsetning.Name = "tb_nyrVidburdurDagsetning";
+            this.tb_nyrVidburdurDagsetning.Size = new System.Drawing.Size(100, 20);
+            this.tb_nyrVidburdurDagsetning.TabIndex = 4;
             // 
             // tb_nyrVidburdurHeiti
             // 
@@ -847,7 +891,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button bt_nyrVidburdur;
-        private System.Windows.Forms.TextBox tb_NyrVidburdurDagsetning;
+        private System.Windows.Forms.TextBox tb_nyrVidburdurDagsetning;
         private System.Windows.Forms.TextBox tb_nyrVidburdurHeiti;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
@@ -879,5 +923,9 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.TextBox tb_nyrMedlimurLykilord;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button bt_ummaeli;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tb_nyrVidburdurMyndURL;
+        private System.Windows.Forms.Label label18;
     }
 }

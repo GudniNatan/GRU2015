@@ -23,7 +23,7 @@ namespace dub16_Control
         string tengistrengur = null;
         string fyrirspurn = null;
 
-        MySqlConnection sqltenging;
+        public MySqlConnection sqltenging;
         MySqlCommand nySQLskipun;
         MySqlDataReader sqllesari = null;
 
@@ -162,11 +162,15 @@ namespace dub16_Control
             }
         }
 
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
-                sqltenging.Open();
+                if (sqltenging.State != ConnectionState.Open)
+                {
+                    sqltenging.Open();
+                }
+                
                 return true;
             }
             catch (MySqlException ex)
@@ -174,7 +178,7 @@ namespace dub16_Control
                 throw ex;
             }
         }
-        private bool CloseConnection()
+        public bool CloseConnection()
         {
             try
             {
@@ -400,11 +404,11 @@ namespace dub16_Control
             }
 
         }
-        public void NyVidburdur(string nafn, string date)
+        public void NyrVidburdur(string nafn, string date, string ummaeli, string myndURL)
         {
             if (OpenConnection() == true)
             {
-                fyrirspurn = "INSERT INTO Vidburdur (heiti, dagsetning) VALUES ('" + nafn + "','" + date + "')";
+                fyrirspurn = "INSERT INTO Vidburdur (heiti, dagsetning, ummaeli, myndURL) VALUES ('" + nafn + "','" + date + "', '" + ummaeli + "', '" + myndURL + "')";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();

@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CryptSharp;
 
 namespace dub16_Control
 {
@@ -20,7 +19,6 @@ namespace dub16_Control
         
         
         Gagnagrunnur gagnagrunnur = new Gagnagrunnur();
-        Form2 form2 = new Form2();
        
         public Form1()
         {
@@ -41,7 +39,11 @@ namespace dub16_Control
         private void bt_innskra_Click(object sender, EventArgs e)
         {
             string kt = tb_kennitala.Text;
+            if (gagnagrunnur.OpenConnection() == true)
+            {
+                gagnagrunnur.CloseConnection();
 
+            }
             if (gagnagrunnur.Kennitolutekk(kt))
             {
                 if (gagnagrunnur.IsAdmin(kt))
@@ -72,6 +74,7 @@ namespace dub16_Control
         {
             string kt = tb_kennitala.Text;
             string pw = tb_lykilord.Text;
+            Form2 form2 = new Form2();
 
             if (gagnagrunnur.Login(kt, pw))
             {
