@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="css/stilsida.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="easybox/distrib.min.js"></script>
+    <link rel="stylesheet" href="easybox/styles/default/easybox.min.css" type="text/css" media="screen" />
 </head>
 <body>
 <main>
@@ -87,8 +89,8 @@
             <tbody>
             <?php           
                 foreach ($Vidburdir as $entry) {
-                    echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "'>Smella</a></td></tr>
-<tr class='moreInfo' id='vidburdur" . $entry[0] . "'><td colspan=4><p><b>" . $entry[3] . "</b></p></td></tr>";              
+                    echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "' class='lightbox'>Smella</a></td></tr>
+";              
                  }
              ?>
              </tbody>
@@ -100,5 +102,10 @@
     </footer>
 </main>
     <script type="text/javascript" src="js/javascript.js"></script>
+    <?php
+        foreach ($Vidburdir as $entry) {
+            echo '<div id="vidburdur' . $entry[0] .'" class="lightboxcontainer"><p>' . $entry[3] . '</p></div>';
+        }
+    ?>
 </body>
 </html>

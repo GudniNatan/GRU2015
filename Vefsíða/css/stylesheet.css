@@ -91,6 +91,10 @@ form#dagaval{
 	justify-content: space-around;
 	text-align: center;
 	max-width: 30em;
+	margin: 0 auto;
+}
+form#login{
+	margin: 0 auto;
 }
 form#dagaval *{
 	margin: 0.25em 0;
@@ -149,6 +153,9 @@ article h1{
 		background: black;
 		-webkit-background-clip: text;
 	  	-webkit-text-fill-color: transparent;
+	}
+	body{
+		background-size: cover;
 	}
 }
 
@@ -267,10 +274,17 @@ footer p{
 	width: 100%;
 }
 iframe{
-	width: 80%;
-	max-width: 35em;
+	width: 100%;
+	max-width: 32em;
 	height: 20em;
+	margin: 0 auto;
 	max-height: auto;
+}
+.lightboxcontainer{
+	display:none;
+	width:32em;
+	height:auto;
+	max-width:100%;
 }
 
 
@@ -356,7 +370,7 @@ body{
 	background-image: url("../img/smallbackground.jpg");
 	background-position: top center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: fixed;
 	margin: 0;
 }
 main{

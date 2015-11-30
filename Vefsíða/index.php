@@ -11,6 +11,8 @@
     <link rel="stylesheet" type="text/css" href="css/stilsida.css">
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="easybox/distrib.min.js"></script>
+    <link rel="stylesheet" href="easybox/styles/default/easybox.min.css" type="text/css" media="screen" />
 </head>
 <body>
 <main>
@@ -76,12 +78,12 @@
 '; 
                 echo '<p>' . $entry[0] . '</p>
 '; 
-                echo '<a href="dagskra.php#vidburdur1" class="pure-menu-heading custom-brand"><img src="' . $entry[3] . '"></a>
+                echo '<a href="#vidburdur' . $entry[4] .'" class="pure-menu-heading custom-brand lightbox"><img src="' . $entry[3] . '"></a>
 ';
-                echo '<p><a href="dagskra.php#vidburdur' . $entry[4] .'" class="pure-button pure-input-1 pure-button-primary">Lesa meira >></a></p>
+                echo '<p><a href="#vidburdur' . $entry[4] .'" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira >></a></p>
 ';
                 echo '</div>
-'; 
+';
             }
          ?>
     </article>
@@ -126,5 +128,10 @@
     </footer>
 </main>
     <script type="text/javascript" src="js/javascript.js"></script>
+<?php
+    foreach ($allirVidburdir as $entry) {
+        echo '<div id="vidburdur' . $entry[4] .'" class="lightboxcontainer"><p>' . $entry[2] . '</p></div>';
+    } 
+?>
 </body>
 </html>
