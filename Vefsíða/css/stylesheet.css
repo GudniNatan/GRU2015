@@ -105,6 +105,16 @@ form#login *, form#register *{
 form#login, form#register{
 	display: block;
 }
+form#register{
+	margin: 0;
+	padding: 0;
+}
+.content{
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 0px 1.25em;
+}
 article{
     display: flex;
     flex-wrap: wrap;
@@ -286,7 +296,11 @@ iframe{
 	height:auto;
 	max-width:100%;
 }
-
+.lightboximg{
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 2em;
+}
 
 
 /* SLIDESHOW CSS */

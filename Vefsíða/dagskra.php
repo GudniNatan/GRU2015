@@ -51,7 +51,7 @@
     
             $result = $conn -> query($fyrirspurn);
             while ($row = $result -> fetch()) {
-                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning'], $row['ummaeli']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning'], $row['ummaeli'], $row['myndURL']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
             }
 
             if (count($Vidburdir) < 1) {
@@ -64,7 +64,7 @@
     
             $result = $conn -> query($fyrirspurn);
             while ($row = $result -> fetch()) {
-                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning'], $row['ummaeli']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
+                $Vidburdir[] = array($row['ID'], $row['heiti'], $row['dagsetning'], $row['ummaeli'], $row['myndURL']);   //Breyta þessu ef við bætum við fleiri skráningarhlutum
             }
         }
     ?>
@@ -104,7 +104,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
     <?php
         foreach ($Vidburdir as $entry) {
-            echo '<div id="vidburdur' . $entry[0] .'" class="lightboxcontainer"><p>' . $entry[3] . '</p></div>';
+        echo '<div id="vidburdur' . $entry[0] .'" class="lightboxcontainer"><img class="lightboximg" src="' . $entry[4] . '"><p>' . $entry[3] . '</p></div>';
         }
     ?>
 </body>

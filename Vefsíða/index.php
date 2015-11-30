@@ -93,7 +93,7 @@
                 <input type="radio" id="tab-1" name="tab-group-1" checked>
                 <label for="tab-1">Innskrá</label>
                 <div class="content">
-                    <form id="login" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
+                    <form id="login" action="skraning.php" method="post" class="pure-form">
                         <fieldset>
                             <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
                             <input type="password" name="lykilord" placeholder="Lykilorð" required title="Lykilorð">
@@ -107,7 +107,7 @@
                 <input type="radio" id="tab-2" name="tab-group-1">
                 <label for="tab-2">Nýskrá</label>
                 <div class="content">
-                    <form id="register" action="skraning.php" method="post" class="pure-form" style="padding: 10px;">
+                    <form id="register" action="skraning.php" method="post" class="pure-form">
                         <fieldset>
                             <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
                             <input type="password" name="lykilord" placeholder="Lykilorð" required title="Lykilorð">
@@ -130,7 +130,7 @@
     <script type="text/javascript" src="js/javascript.js"></script>
 <?php
     foreach ($allirVidburdir as $entry) {
-        echo '<div id="vidburdur' . $entry[4] .'" class="lightboxcontainer"><p>' . $entry[2] . '</p></div>';
+        echo '<div id="vidburdur' . $entry[4] .'" class="lightboxcontainer"><img class="lightboximg" src="' . $entry[3] . '"><p>' . $entry[2] . '</p></div>';
     } 
 ?>
 </body>
