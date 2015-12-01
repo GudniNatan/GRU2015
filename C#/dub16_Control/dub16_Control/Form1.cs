@@ -46,25 +46,25 @@ namespace dub16_Control
                 gagnagrunnur.CloseConnection();
 
             }
-            if (gagnagrunnur.Kennitolutekk(kt))
+            if (gagnagrunnur.Kennitolutekk(kt))//ef þetta er kennitala
             {
-                if (gagnagrunnur.IsAdmin(kt))
+                if (gagnagrunnur.IsAdmin(kt))//ef þetta er admin
                 {
-                    login();
+                    login();//opnar klassin Login
                 }
-                else
+                else//annars ekki
                 {
                     MessageBox.Show("Ekki admin");
                 }
             }
-            else
+            else//annars ekki
             {
                 MessageBox.Show("Kennitala röng");
-                if (gagnagrunnur.IsAdmin(kt))
+                if (gagnagrunnur.IsAdmin(kt))//ef þeta er admin 
                 {
-                    login();
+                    login();//opnar klassin login
                 }
-                else
+                else//anarst ekki  
                 {
                     MessageBox.Show("Ekki admin");
                 }
@@ -72,7 +72,7 @@ namespace dub16_Control
             
                     
         }
-        private void login()
+        private void login()//
         {
             string kt = tb_kennitala.Text;
             string pw = tb_lykilord.Text;
