@@ -26,11 +26,12 @@ namespace dub16_Control
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //checkar ef það virkar að tengja gagnagrunnin
             try
             {
                 gagnagrunnur.TengingVidGagnagrunn();
             }
-            catch (Exception ex)
+            catch (Exception ex)//Skíla villunar ef það virkar ekki
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -39,6 +40,7 @@ namespace dub16_Control
         private void bt_innskra_Click(object sender, EventArgs e)
         {
             string kt = tb_kennitala.Text;
+            //ef gagna grunnur er opið
             if (gagnagrunnur.OpenConnection() == true)
             {
                 gagnagrunnur.CloseConnection();
