@@ -89,7 +89,7 @@
             <tbody>
             <?php           
                 foreach ($Vidburdir as $entry) {
-                    echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "' class='lightbox'>Smella</a></td></tr>
+                    echo "<tr id='dagskra'><td>" . $entry[0] . "</td><td>" . $entry[1] . "</td><td>" . $entry[2] . "</td><td><a href='#vidburdur" . $entry[0] . "' class='lightbox'>Meira...</a></td></tr>
 ";              
                  }
              ?>
