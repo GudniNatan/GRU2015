@@ -19,12 +19,12 @@ namespace dub16_Control
         Form2 form2 = new Form2();
 
         private void bt_submit_Click(object sender, EventArgs e)
-        {
+        {  
             form2.ummaeli = rtb_text.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-        public void GetUmmaeli(string ummaeli)
+        public void GetUmmaeli(string ummaeli) 
         {
             rtb_text.Text = ummaeli;
         }

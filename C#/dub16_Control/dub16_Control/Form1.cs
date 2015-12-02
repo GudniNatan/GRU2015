@@ -19,7 +19,7 @@ namespace dub16_Control
         
         
         Gagnagrunnur gagnagrunnur = new Gagnagrunnur();
-       
+        
         public Form1()
         {
             InitializeComponent();
@@ -63,7 +63,11 @@ namespace dub16_Control
                 MessageBox.Show("Kennitala röng");
                 if (gagnagrunnur.IsAdmin(kt))//ef þeta er admin 
                 {
+                    Form1 form1 = new Form1();
+                    form1.DialogResult = DialogResult.OK;
+                    form1.Close();
                     login();//opnar klassin login
+                    
                 }
                 else//anarst ekki  
                 {
@@ -79,14 +83,16 @@ namespace dub16_Control
         {
             string kt = tb_kennitala.Text;
             string pw = tb_lykilord.Text;
-            Form2 form2 = new Form2();
+            Form2 form2 = new Form2();//Búa til Form2
 
-            if (gagnagrunnur.Login(kt, pw))
+            if (gagnagrunnur.Login(kt, pw))//ef bæði kennitala og password er rétt
             {
-                form2.Form2Load(kt, pw);
-                form2.Show();
+                form2.Form2Load(kt, pw);//loada form 2
+                form2.Show();//sýna form2
+
+                
             }
-            else
+            else//annars
             {
                 MessageBox.Show("Rangt lykilorð");
             }

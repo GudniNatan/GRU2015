@@ -87,9 +87,9 @@ namespace dub16_Control
         }
         public void SettInnSqlToflu(string notandi, string heiti)
         {
-            if (OpenConnection() == true)
+            if (OpenConnection() == true)//ef tenging er opið
             {
-                fyrirspurn = "INSERT INTO " + notandi + " (heiti) VALUES ('" + heiti + "')";
+                fyrirspurn = "INSERT INTO " + notandi + " (heiti) VALUES ('" + heiti + "')";//set nýr töfluna inná sql
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();
@@ -98,9 +98,9 @@ namespace dub16_Control
         }
         public void Uppfaera(string notandi, string id, string heiti)
         {
-            if (OpenConnection() == true)
+            if (OpenConnection() == true)//ef tenging er opið
             {
-                fyrirspurn = "UPDATE " + notandi + " SET heiti ='" + heiti + "' WHERE id = '" + id + "'";
+                fyrirspurn = "UPDATE " + notandi + " SET heiti ='" + heiti + "' WHERE id = '" + id + "'";//breytt töfluna inná sql
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();
@@ -112,9 +112,9 @@ namespace dub16_Control
             string salt = BlowfishCrypter.Blowfish.GenerateSalt(cost);
             string hash = BlowfishCrypter.Blowfish.Crypt(lykilord, salt);
 
-            if (OpenConnection() == true)
+            if (OpenConnection() == true)//ef tenging er opið
             {
-                fyrirspurn = "INSERT INTO Medlimur (nafn, kennitala, simi, lykilord) VALUES ('" + nafn + "','" + kt + "','" + simi + "', '" + hash + "')";
+                fyrirspurn = "INSERT INTO Medlimur (nafn, kennitala, simi, lykilord) VALUES ('" + nafn + "','" + kt + "','" + simi + "', '" + hash + "')";//set nýr töfluna inná sql
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();
@@ -134,16 +134,16 @@ namespace dub16_Control
         }
         public void Eyda(string tafla, string id)
         {
-            if (OpenConnection() == true)
+            if (OpenConnection() == true)//ef tenging er opið
             {
-                try
+                try//prufa
                 {
-                    fyrirspurn = "DELETE FROM " + tafla + " where id ='" + id + "'";
+                    fyrirspurn = "DELETE FROM " + tafla + " where id ='" + id + "'";//eyða töfluna inná sql
                     nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                     nySQLskipun.ExecuteNonQuery();
                     CloseConnection();
                 }
-                catch (MySqlException)
+                catch (MySqlException)//skilar villunar
                 {
                     MessageBox.Show("Ekki er hægt að eyða úr " + tafla + "töflu ef notandi er skráður á viðburð");
                     CloseConnection();
@@ -153,7 +153,7 @@ namespace dub16_Control
 
         public bool OpenConnection()
         {
-            try
+            try//ðrufa
             {
                 if (sqltenging.State != ConnectionState.Open)
                 {
@@ -162,30 +162,30 @@ namespace dub16_Control
                 
                 return true;
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex)//skilar villunar
             {
                 throw ex;
             }
         }
         public bool CloseConnection()
         {
-            try
+            try//prufa
             {
                 sqltenging.Close();
                 return true;
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex)//skilar villuna
             {
                 throw ex;
             }
         }
         public List<string> LesaUrSqlToflu(string tafla)
         {
-            List<string> faerslur = new List<string>();
+            List<string> faerslur = new List<string>();//byr til list
             string line = null;
-            if (OpenConnection() == true)
+            if (OpenConnection() == true)//ef tenging er opið
             {
-                fyrirspurn = "SELECT * FROM " + tafla;
+                fyrirspurn = "SELECT * FROM " + tafla;//leita á töflur inná sql
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 sqllesari = nySQLskipun.ExecuteReader();
                 while (sqllesari.Read())
@@ -197,7 +197,7 @@ namespace dub16_Control
                     faerslur.Add(line);
                     line = null;
                 }
-                CloseConnection();
+                CloseConnection();//loka tenging
                 return faerslur;
 
             }
@@ -208,7 +208,7 @@ namespace dub16_Control
             string[] gogn = new string[4];
             if (OpenConnection() == true)
             {
-                fyrirspurn = "SELECT id_medlimur, nafn, netfang, simanumer FROM medlimur WHERE id_medlimur = '" + id + "'";
+                fyrirspurn = "SELECT id_medlimur, nafn, netfang, simanumer FROM medlimur WHERE id_medlimur = '" + id + "'";//leita inná sql töflur
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 sqllesari = nySQLskipun.ExecuteReader();
                 while (sqllesari.Read())
@@ -230,7 +230,7 @@ namespace dub16_Control
             string lina = null;
             if (OpenConnection() == true)
             {
-                fyrirspurn = "SELECT id_medlimur,nafn,netfang,simanumer FROM medlimur where id_medlimur='" + id + "'";
+                fyrirspurn = "SELECT id_medlimur,nafn,netfang,simanumer FROM medlimur where id_medlimur='" + id + "'";//leitar inná sql töflur
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 sqllesari = nySQLskipun.ExecuteReader();
                 while (sqllesari.Read())
@@ -311,7 +311,7 @@ namespace dub16_Control
         {
             if (OpenConnection() == true)
             {
-                fyrirspurn = "INSERT INTO Admin (medlimur_ID) VALUES ('" + id + "')";
+                fyrirspurn = "INSERT INTO Admin (medlimur_ID) VALUES ('" + id + "')";//sett iná sql töflur
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();
@@ -360,7 +360,7 @@ namespace dub16_Control
                 }
                 else
                 {
-                    fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vidID + "','" + medID + "')";
+                    fyrirspurn = "INSERT INTO Skraning (vidburdur_id, medlimur_id) VALUES ('" + vidID + "','" + medID + "')";//sett iná sql töflur
                     nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                     nySQLskipun.ExecuteNonQuery();
                     CloseConnection();             

@@ -35,3 +35,14 @@ H:\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Ummaeli
 C:\Users\1608984379\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.exe.config
 C:\Users\1608984379\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.exe
 C:\Users\1608984379\Documents\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.pdb
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.exe.config
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.exe
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.pdb
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.exe
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\bin\Debug\dub16_Control.pdb
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.csprojResolveAssemblyReference.cache
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Form1.resources
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Form2.resources
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Properties.Resources.resources
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.Ummaeli.resources
+\\skra\nem-redirect$\1608984379\Desktop\GitHub\GRU2015\C#\dub16_Control\dub16_Control\obj\Debug\dub16_Control.csproj.GenerateResource.Cache

@@ -201,7 +201,7 @@ namespace dub16_Control
 
         private void bt_nyrMedlimur_Click(object sender, EventArgs e)
         {
-
+                                   
             string nafn = tb_nyrMedlimurNafn.Text;
             string kt = tb_nyrMedlimurKennitala.Text;
             string simi = tb_nyrMedlimurSimi.Text;
