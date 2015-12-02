@@ -139,6 +139,7 @@
 	if (isset($_POST['register'])) {	//REGISTER
 
 		$isunique = true;
+		$kennitala2 = $_POST['kennitala'];
 		$kennitala = $_POST['kennitala'];
 		$nafn = $_POST['nafn'];
 		$simi = $_POST['simi'];
@@ -156,7 +157,7 @@
 				$medlimur_id[] = array($row['ID']);
 		}
 		foreach ($medlimur_id as $entry) {
-			if ($kennitala = $entry[0]) {
+			if ($kennitala == $entry[0]) {
 				$isunique = false;
 			}
 		}
