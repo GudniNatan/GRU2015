@@ -63,9 +63,7 @@ namespace dub16_Control
                 MessageBox.Show("Kennitala röng");
                 if (gagnagrunnur.IsAdmin(kt))//ef þeta er admin 
                 {
-                    Form1 form1 = new Form1();
-                    form1.DialogResult = DialogResult.OK;
-                    form1.Close();
+                    
                     login();//opnar klassin login
                     
                 }

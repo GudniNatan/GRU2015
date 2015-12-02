@@ -47,12 +47,12 @@ namespace dub16_Control
         }
         void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            List<string> gogn = new List<string>();
+            List<string> gogn = new List<string>();//Býr til list
             TabPage current = (sender as TabControl).SelectedTab;
             tabpage = current.Text;
 
             // Hreinsa ListView
-            listView1.Clear();
+            listView1.Clear();//hreinsir listview
             switch (tabpage)
             {
                 case "Medlimur":
@@ -154,7 +154,7 @@ namespace dub16_Control
             ListViewItem itm;
 
 
-            try
+            try//prufa
             {
                 linur = gagnagrunnur.LesaUrSqlToflu(tafla);
 
@@ -165,7 +165,7 @@ namespace dub16_Control
                     string[] arr = new string[linaUrLista.Length - 1];
 
 
-                    for (int i = 0; i < linaUrLista.Length - 1; i++)
+                    for (int i = 0; i < linaUrLista.Length - 1; i++)//for liggja ef i er minni en linaurlista -1
                     {
                         arr[i] = linaUrLista[i];
                     }
@@ -174,7 +174,7 @@ namespace dub16_Control
                     listView1.Items.Add(itm);
                 }
             }
-            catch (Exception ex)
+            catch (Exception ex)//skilar villunar
             {
                 MessageBox.Show(ex.ToString());
                 throw;
@@ -300,12 +300,12 @@ namespace dub16_Control
         {
             string nafn = tb_nyrVidburdurHeiti.Text;
             string date = tb_nyrVidburdurDagsetning.Text;
-            try
+            try//prufa
             {
-                DateTime myDateTime = new DateTime();
+                DateTime myDateTime = new DateTime();//býr stil daga Tíminn
                 date = myDateTime.Date.ToString("yyyy-MM-dd");
             }
-            catch (Exception)
+            catch (Exception)//skila villuna
             {
                 MessageBox.Show("Bilaði");
             }
@@ -362,18 +362,18 @@ namespace dub16_Control
             string id = tb_breytaSkraninguID.Text;
             string vid_id = tb_breytaSkraninguVidburdurID.Text;
             string med_id = tb_breytaSkraninguMedlimurID.Text;
-            try
+            try//prufa
             {
                 gagnagrunnur.UpfaeraSkraning(id, vid_id, med_id);
             }
-            catch (Exception ex)
+            catch (Exception ex)//skilar
             {
                 MessageBox.Show(ex.ToString());
                 
             }
             Refresh(tabpage);
         }
-
+         
         private void bt_ummaeli_Click(object sender, EventArgs e)
         {
             using (Ummaeli umform = new Ummaeli())
