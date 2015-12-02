@@ -1,72 +1,84 @@
+h1,
+h2,
+h4 {
+    padding-right: 1em
+}
+h2,
+h4,
+p {
+    margin: 0
+}
+.tab label,
+.tabs {
+    position: relative
+}
+.content,
+footer,
+html {
+    bottom: 0;
+    left: 0
+}
+.content,
+.tab label {
+    border: 1px solid #ccc
+}
+body,
+main {
+    flex-wrap: wrap
+}
+h2,
+h4 {
+    padding-left: 1em
+}
+.pure-g article,
+.pure-g aside,
+.pure-g div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+.contentDiv,
+.mainContent,
 body {
-  max-width: 80em;  /*1280px*/
-  margin: 0 auto;
-}
-h1{
-padding-right: 1em;
-}
-h2, h4 {
-  margin: 0;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-  .pure-g div, 
-  .pure-g article,
-  .pure-g aside {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-p{
-margin: 0;
+    box-sizing: border-box
 }
 .tabs {
-  position: relative;   
-  min-height: 15em; /* This part sucks */
-  clear: both;
-  margin: 25px 0;
+    min-height: 15em;
+    clear: both;
+    margin: 25px 0
 }
-
 .tab {
-  float: left;
+    float: left
 }
 .tab label {
-  background: #eee; 
-  padding: 0.625em; 
-  border: 1px solid #ccc; 
-  margin-left: -0.0625em; 
-  position: relative;
-  left: 0.0625em; 
+    background: #eee;
+    padding: .625em;
+    margin-left: -.0625em;
+    left: .0625em
+}
+.content,
+.custom-toggle,
+.custom-wrapper,
+html {
+    position: absolute
 }
 .tab [type=radio] {
-  display: none;   
+    display: none
 }
 .content {
-  position: absolute;
-  top: 1.75em;
-  left: 0;
-  background: white;
-  right: 0;
-  bottom: 0;
-  padding: 1.25em;
-  border: 1px solid #ccc; 
+    top: 1.75em;
+    background: #fff;
+    right: 0
 }
-[type=radio]:checked ~ label {
-  background: white;
-  border-bottom: 1px solid white;
-  z-index: 2;
+[type=radio]:checked~label {
+    background: #fff;
+    border-bottom: 1px solid #fff;
+    z-index: 2
 }
-[type=radio]:checked ~ label ~ .content {
-  z-index: 1;
+[type=radio]:checked~label~.content {
+    z-index: 1
 }
-            /*  
-                ATHUGIÐ! pure-u~ klasar eru hannaðir sem ílát fyrir annað efni. 
-                EKKI setja útlitsstíla á þá (t.d. border, því þá riðlast uppbyggingin). 
-                Þó má gera undantekningu á því, t. d. á meðan hönnun vefsins stendur yfir.            
-            */ 
-
 .custom-wrapper {
-    position: absolute;
     top: 0;
     left: 0;
     background-color: #ff9c90;
@@ -75,30 +87,29 @@ margin: 0;
     height: 2.1em;
     overflow: hidden;
     z-index: 100;
-    -webkit-transition: height 0.5s;
-    -moz-transition: height 0.5s;
-    -ms-transition: height 0.5s;
-    transition: height 0.5s;
+    -webkit-transition: height .5s;
+    -moz-transition: height .5s;
+    -ms-transition: height .5s;
+    transition: height .5s
 }
-
 .custom-wrapper.open {
-    height: 11em;
+    height: 11em
 }
-
 .custom-menu-3 {
-    text-align: right;
+    text-align: right
 }
-
 .custom-toggle {
     width: 34px;
     height: 34px;
-    display: block;
-    position: absolute;
     top: 0;
     right: 0;
-    display: none;
+    display: none
 }
-
+div,
+form#login,
+form#register {
+    display: block
+}
 .custom-toggle .bar {
     background-color: #777;
     display: block;
@@ -108,462 +119,439 @@ margin: 0;
     position: absolute;
     top: 18px;
     right: 7px;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    transition: all .5s
 }
-
+.not-top,
+html {
+    top: 0;
+    right: 0
+}
 .custom-toggle .bar:first-child {
     -webkit-transform: translateY(-6px);
     -moz-transform: translateY(-6px);
     -ms-transform: translateY(-6px);
-    transform: translateY(-6px);
+    transform: translateY(-6px)
 }
-
 .custom-toggle.x .bar {
     -webkit-transform: rotate(45deg);
     -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    transform: rotate(45deg)
 }
-
 .custom-toggle.x .bar:first-child {
     -webkit-transform: rotate(-45deg);
     -moz-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+    transform: rotate(-45deg)
 }
-
 @media (max-width: 47.999em) {
-
     .custom-menu-3 {
-        text-align: right;
+        text-align: right
     }
-
     .custom-toggle {
-        display: block;
+        display: block
     }
-    .tabs{
-      min-height: 17em;
-      max-width: 25em;
-      margin: 25px auto;
+    .tabs {
+        min-height: 17em;
+        max-width: 25em;
+        margin: 25px auto
     }
-
+}
+.notification,
+article,
+form#dagaval,
+main,
+nav {
+    text-align: center
+}
+#info,
+form {
+    display: inline-block
+}
+.content,
+article,
+body,
+form#dagaval {
+    display: flex
+}
+body,
+html,
+main {
+    min-height: 100%
 }
 .main {
     padding: 2em;
-    color: black;
+    color: #000
 }
-img{
-  width: auto;
-  max-width: 100%;
-  max-height: 100%;
+.pure-menu-heading,
+fieldset {
+    padding: 0
 }
-nav img{
- height: 2em;
+img {
+    width: auto;
+    max-height: 100%
 }
-.pure-menu-heading{
-  padding: 0;
+.logoDiv,
+.logoDiv img {
+    max-height: 5em
+}
+nav img {
+    height: 2em
 }
 html {
-    min-height: 100%;
-    position:absolute;
-  top:0; 
-  bottom:0; 
-  right:0; 
-  left:0;
-  font-size: 0.9em;
+    font-size: .9em
 }
-body{
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 100%;
-  justify-content: center;
-  margin: 0;
-  padding-top: 2.1em;
-  box-sizing: border-box;
+body {
+    max-width: 100%;
+    justify-content: center;
+    padding-top: 2.1em
 }
-form{
-  margin: 0;
-  margin-bottom: 2em;
-  display: inline-block;
+form {
+    margin: 0 0 2em
 }
-div:not(.pure-menu)div:not(.pure-u-1), body, h1, h2, h3, h4, p, form{
-  box-sizing: border-box;
-  margin-bottom: 1em;
+body,
+div:not(.pure-menu)div:not(.pure-u-1),
+form,
+h1,
+h2,
+h3,
+h4,
+p {
+    box-sizing: border-box;
+    margin-bottom: 1em
 }
-table{
-  margin: 0;
-  border-bottom: 1px solid gray;
+table {
+    margin: 0;
+    border-bottom: 1px solid gray
 }
-nav{
-  text-align: center;
-  width: 100%;
+nav {
+    width: 100%
 }
-fieldset{
-  margin: 0;
-  padding: 0;
-  border: none;
+fieldset {
+    margin: 0;
+    border: none
 }
-fieldset input{
-  float: right;
+fieldset input {
+    float: right
 }
-.notification{
-  background-color: green;
-  color: white;
-  width: 95%;
-  text-align: center;
-  height: auto;
-  background-image: url(../img/x.png);
-  background-position: center right;
+.notification {
+    background-color: green;
+    color: #fff;
+    width: 95%;
+    height: auto;
+    background-image: url(../img/x.png);
+    background-position: center right;
     background-repeat: no-repeat;
     background-size: auto 40%;
     border-radius: 1em;
-    margin: 0.5em 0;
+    margin: .5em 0
 }
-#info{
-  background-color: lightgray;
-  display: inline-block;
-  text-align: left;
-  width: 15em;
-  padding: 1em;
-  border-radius: 1em;
-  right: 0;
-  margin: 0 3.5em;
+form#login *,
+form#register *,
+main {
+    width: 100%
 }
-#info h2{
-  border-bottom: 1px solid black;
-  margin-bottom: 0.3em;
+article,
+form#dagaval,
+form#login {
+    margin: 0 auto
 }
-#info p{
-  margin-bottom: 1em;
+#info {
+    background-color: #d3d3d3;
+    text-align: left;
+    width: 15em;
+    padding: 1em;
+    border-radius: 1em;
+    right: 0;
+    margin: 0 3.5em
 }
-div{
-  display: block;
+#info h2 {
+    border-bottom: 1px solid #000;
+    margin-bottom: .3em
 }
-main{
-  order: 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: 0;
-  justify-content: space-around;
-  max-width: 80em;
-  text-align: center;
-  align-content: flex-start;
+#info p {
+    margin-bottom: 1em
 }
-form#dagaval{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  text-align: center;
-  max-width: 30em;
-  margin: 0 auto;
+main {
+    order: 0;
+    margin: 0;
+    justify-content: space-around;
+    max-width: 80em;
+    align-content: flex-start;
+    padding-top: 1em
 }
-form#login{
-  margin: 0 auto;
-}
-form#dagaval *{
-  margin: 0.25em 0;
-}
-form#login *, form#register *{
-  width: 100%;
-}
-form#login, form#register{
-  display: block;
-}
-form#register{
-  margin: 0;
-  padding: 0;
-}
-.content{
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0px 1.25em;
-}
-article{
-    display: flex;
+form#dagaval {
     flex-wrap: wrap;
-  margin: 0;
-  justify-content: space-around;
-  text-align: center;
-  margin: 0 auto;
+    justify-content: space-around;
+    max-width: 30em
 }
-article h1{
-  padding: 0;
+form#dagaval * {
+    margin: .25em 0
 }
-.contentDiv p{
+form#register {
+    margin: 0;
+    padding: 0
+}
+.content {
+    align-items: center;
+    height: 100%;
+    padding: 0 1.25em
+}
+article,
+footer {
+    flex-wrap: wrap
+}
+article {
+    justify-content: space-around
+}
+article h1 {
+    padding: 0
+}
+.contentDiv p {
     display: block;
-    max-width: 20em;
+    max-width: 20em
 }
-.contentDiv{
-    padding: 0.5em;
-    box-sizing:border-box;
+.contentDiv {
+    padding: .5em
 }
-.events{
-  order: 3;
-  align-items: flex-end;
+.events {
+    order: 3;
+    align-items: flex-end
 }
-.mainContent{
-  order: 1;
-  box-sizing: border-box;
-  text-align: left;
-  padding: 2em;
-  max-width: 45em;
-  align-items: flex-start;
+.mainContent {
+    order: 1;
+    text-align: left;
+    padding: 2em;
+    max-width: 45em;
+    align-items: flex-start
 }
-.mainContent div{
-  height: 9.5em;
-  overflow: hidden;
-  margin-bottom: 1em;
+.logoDiv,
+footer {
+    text-align: center
 }
-
-/* BARA WEBKIT (Chrome og Safari) */
-@media screen and (-webkit-min-device-pixel-ratio:0) { 
-  .textGradient{
-    background: -webkit-linear-gradient(black, black, rgba(255,255,255,0.5));
-    -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-  }
-  .textSolid{
-    background: black;
-    -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-  }
-  body{
-    background-size: cover;
-  }
+.mainContent div {
+    height: 9.5em;
+    overflow: hidden;
+    margin-bottom: 1em
 }
-
-/* Index síða (meira og minna) */
-.mainContent h1{
-  height: 1em;
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .textGradient,
+    .textSolid {
+        -webkit-text-fill-color: transparent
+    }
+    .textGradient {
+        background: -webkit-linear-gradient(black, #000, rgba(255, 255, 255, .5));
+        -webkit-background-clip: text
+    }
+    .textSolid {
+        background: #000;
+        -webkit-background-clip: text
+    }
+    body {
+        background-size: cover
+    }
 }
-.more{
-  display: block;
-  max-width: 10em;
+.mainContent h1 {
+    height: 1em
 }
-.signInTabs{
-  order: 2;
-    width: 100%;
+.more {
+    display: block;
+    max-width: 10em
 }
-#container{
-  margin: 0;
+.signInTabs {
+    order: 2;
+    width: 100%
 }
-.mainContent div p{
-  padding-bottom: 1em;
+#container {
+    margin: 0
 }
-.mainContent div p:last-child{
-  padding-bottom: 0;
+.mainContent div p {
+    padding-bottom: 1em
+}
+.mainContent div p:last-child {
+    padding-bottom: 0
 }
 @media (min-width: 48em) {
-
-    .signInTabs{
-      width: 33.33%;
+    .signInTabs {
+        width: 33.33%
     }
-    article{
-      width: 66.66%;
+    article {
+        width: 66.66%
     }
-    .contentDiv{
-      max-width: 50%;
+    .contentDiv {
+        max-width: 50%
     }
 }
 @media (min-width: 64em) {
-  .contentDiv{
-      max-width: 25%;
-      width: 20em;
+    .contentDiv {
+        max-width: 25%;
+        width: 20em
     }
-    #container{
-    min-width: 50%;
-    text-align: right;
-    max-width: 80em;
-    width: 100%;
-  }
-  footer{
-    position: fixed;
-  }
-  .events{
-    padding-bottom: 5em;
-  }
+    #container {
+        min-width: 50%;
+        text-align: right;
+        max-width: 80em;
+        width: 100%
+    }
+    footer {
+        position: fixed
+    }
+    .events {
+        padding-bottom: 5em
+    }
 }
-
-.logoDiv{
-  display: block;
-  text-align: center;
-  width: 100%;
-  max-height: 5em;
+#slideshow,
+.slideshowimage,
+img {
+    max-width: 100%
 }
-.logoDiv img{
-  max-height: 5em;
+.logoDiv,
+footer,
+footer p,
+iframe {
+    width: 100%
 }
-@media only screen and (max-width :480px){
-  .pure-form input[type=text]{
-    margin-bottom:  0;
-  }
+.logoDiv {
+    display: block
 }
-.moreInfo{
-  display: none;
+@media only screen and (max-width: 480px) {
+    .pure-form input[type=text] {
+        margin-bottom: 0
+    }
 }
-.moreInfo *{
-  position: relative;
-  overflow: hidden;
-    -moz-transition: 0.5s;
-    -ms-transition: 0.5s;
-    -o-transition: 0.5s;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
+.moreInfo {
+    display: none
 }
-.moreInfo:target{
-    display: table-row;
+.moreInfo * {
+    position: relative;
+    overflow: hidden;
+    -moz-transition: .5s;
+    -ms-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s
+}
+.moreInfo:target {
+    display: table-row
 }
 .moreInfo:target * {
-  max-height: 100em;
+    max-height: 100em
 }
-table{
-  max-width: 60em;
+table {
+    max-width: 60em
 }
-tr{
-  border-top: none;
-  border-bottom: 1px solid rgb(203, 203, 203);
-  background-color: white;
+tr {
+    border-top: none;
+    border-bottom: 1px solid #cbcbcb;
+    background-color: #fff
 }
-img{
-  max-width: 100%;
+footer {
+    padding: 1em;
+    border-top: 1px solid rgba(203, 203, 203, .7);
+    border-bottom: 1px solid rgba(203, 203, 203, .7);
+    order: 999;
+    background-color: rgba(240, 240, 240, .7);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center
 }
-footer{
-  text-align: center;
-  padding: 1em;
-  border-top: 1px solid rgba(203, 203, 203, 0.7);
-  border-bottom: 1px solid rgba(203, 203, 203, 0.7);
-  order: 999;
-    background-color: rgba(240, 240, 240, 0.7);
-  bottom:0;
-  left:0;
-  width: 100%;
-  display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+footer p {
+    display: inline-block
 }
-footer p{
-  display: inline-block;
-  width: 100%;
+iframe {
+    max-width: 32em;
+    height: 20em;
+    margin: 0 auto;
+    max-height: auto
 }
-iframe{
-  width: 100%;
-  max-width: 32em;
-  height: 20em;
-  margin: 0 auto;
-  max-height: auto;
+.lightboxcontainer {
+    display: none;
+    width: 32em;
+    height: auto;
+    max-width: 100%
 }
-.lightboxcontainer{
-  display:none;
-  width:32em;
-  height:auto;
-  max-width:100%;
+.lightboximg {
+    display: block;
+    margin: 0 auto 2em
 }
-.lightboximg{
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 2em;
-}
-
-
-/* SLIDESHOW CSS */
-
-
-.slideshowimage#hidden{
+.slideshowimage#hidden {
     opacity: 0;
     position: absolute;
-    max-height: 0;
+    max-height: 0
 }
-.slideshowimage#visible{
-  opacity: 1;
-  position: relative;
-  top: 0;
+.slideshowimage#visible {
+    opacity: 1;
+    position: relative;
+    top: 0
 }
-#slideshowcontainer div button{
-  width: 8em;
-  height: 3em;
+#slideshowcontainer div button {
+    width: 8em;
+    height: 3em
 }
-.slideshowimage{
-  margin: 0;
-    max-width: 100%;
+.slideshowimage {
+    margin: 0;
     height: auto;
-  -webkit-transition: opacity 1s; /* Safari */
-    transition: opacity 1s;
+    -webkit-transition: opacity 1s;
+    transition: opacity 1s
 }
-.not-top{
-  top: 0;
-  right: 0;
-}
-
-#slideshow{
+#slideshow {
     margin: 0 auto;
     position: relative;
-    max-width: 100%;
     height: auto;
     display: inline-block;
-    -webkit-transition: all 1s; /* Safari */
-    transition: all 1s;
+    -webkit-transition: all 1s;
+    transition: all 1s
 }
-#slideshowcontainer div{
-  text-align: center;
-  margin: 1em;
+#slideshowcontainer div {
+    text-align: center;
+    margin: 1em
 }
 #slideshowcontainer {
-  width: 100%;
+    width: 100%
 }
-#slideshowcontainer div a{
-  color: white;
-  margin-left: 0.5em;
-  margin-right: 0.5em;
-  cursor: pointer;
-  /* use background to simulate buttons */
-  display: inline-block;
-  line-height: 25px;
-  width: 25px;
-  height: 25px;
-  border: 0.12em solid gray;
-  background-color: gray;
-  border-radius: 100%;
+#slideshowcontainer div a {
+    color: #fff;
+    margin-left: .5em;
+    margin-right: .5em;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 25px;
+    width: 25px;
+    height: 25px;
+    border: .12em solid gray;
+    background-color: gray;
+    border-radius: 100%
 }
 #slideshowcontainer div a:hover {
-  background: radial-gradient(white, gray, gray);
-  color: black;
+    background: radial-gradient(white, gray, gray);
+    color: #000
 }
 #slideshowcontainer div a#current {
-  background: radial-gradient(white, rgba(0,0,0,0.75));
-  color: black;
+    background: radial-gradient(white, rgba(0, 0, 0, .75));
+    color: #000
 }
-
-
-html{
-  height: 100%;
+html {
+    height: 100%
 }
-body, main {
-  min-height: 100%;
+body {
+    background-color: #1f6684;
+    background-image: url(../img/smallbackground.jpg);
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: fixed;
+    margin: 0
 }
-
-body{
-  background-color: #1f6684;  /* BREYTA ÞESSU EF SKIPT ER UM BAKGRUNN*/
-  background-image: url("../img/smallbackground.jpg");
-  background-position: top center;
-  background-repeat: no-repeat;
-  background-size: fixed;
-  margin: 0;
-}
-main{
-  height: inherit;
-  display: flex;
-  background-color: rgba(255,255,255,0.7);
-  background-attachment: fixed;
+main {
+    height: inherit;
+    display: flex;
+    background-color: rgba(255, 255, 255, .7);
+    background-attachment: fixed
 }
 @media (min-width: 48em) {
-
-    body{
-      background-image: url("../img/background.jpg");
+    body {
+        background-image: url(../img/background.jpg)
     }
 }
