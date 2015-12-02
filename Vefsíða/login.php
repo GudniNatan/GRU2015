@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <head>
     <title>Dub16</title>
@@ -15,7 +18,8 @@
     <link rel="stylesheet" href="easybox/styles/default/easybox.min.css" type="text/css" media="screen" />
 </head>
 <body>
-    <nav class="custom-wrapper pure-g" id="menu">
+<main>
+	<nav class="custom-wrapper pure-g" id="menu">
         <div class="pure-u-1 pure-u-md-1-3">
             <div class="pure-menu">
                 <a href="index.php" class="pure-menu-heading custom-brand"><img src="img/dub16-logo-bw.png"></a>
@@ -37,51 +41,57 @@
             </div>
         </div>
     </nav>
-<main>
+    <p class="notification"><!-- Birtist ef ekki næst tenging við gagnagrunn -->
+<?php
+        include 'dbcon.php';
+        if (isset($_SESSION["wronglogin"])) {
+            echo "Röng kennitala eða lykilord. Reyndu aftur.";
+        }
+        session_destroy();
+    ?></p>
     <div class="logoDiv">
         <img src="img/dub16-logo-bw.png">
     </div>
-    <article class="events">
-        <div class="contentDiv">
-            <p>Guðni Natan Gunnarsson</p>
-            <a href="#gudni" class="pure-menu-heading custom-brand lightbox"><img src="img/gudni.jpg"></a>
-            <p><a href="#" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira >></a></p>
+    <aside class="signInTabs">
+        <div class="tabs">
+            <div class="tab">
+                <input type="radio" id="tab-1" name="tab-group-1" checked>
+                <label for="tab-1">Innskrá</label>
+                <div class="content">
+                    <form id="login" action="skraning.php" method="post" class="pure-form">
+                        <fieldset>
+                            <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                            <input type="password" name="lykilord" placeholder="Lykilorð" required title="Lykilorð">
+                        </fieldset>
+                        <input type="hidden" name="login"> <!-- Segir PHP kóðanum hvað á að gera -->
+                        <button type="submit" class="pure-button pure-input-1 pure-button-primary">Skrá inn</button>
+                    </form>
+                </div>
+            </div>
+            <div class="tab">
+                <input type="radio" id="tab-2" name="tab-group-1">
+                <label for="tab-2">Nýskrá</label>
+                <div class="content">
+                    <form id="register" action="skraning.php" method="post" class="pure-form">
+                        <fieldset>
+                            <input type="text" name="kennitala" placeholder="Kennitala" required pattern="\d{10}" title="Kennitala, engin bil eða bandstrik">
+                            <input type="password" name="lykilord" placeholder="Lykilorð" required title="Lykilorð">
+                            <input type="text" name="nafn" placeholder="Nafn" required>
+                            <input type="text" name="simi" placeholder="Sími" required pattern="\d{7}" title="Sjö stafa símanúmer, engin bil eða bandstrik" >
+                        </fieldset>
+                        <input type="hidden" name="register"> 
+                        <button type="submit" class="pure-button pure-input-1 pure-button-primary">Nýskrá</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="contentDiv">
-            <p>Jóhann Rúnarsson</p>
-            <a href="#johann" class="pure-menu-heading custom-brand lightbox"><img src="img/johann.jpg"></a>
-            <p><a href="#" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira >></a></p>
         </div>
-        <div class="contentDiv">
-            <p>Óli Pétur Olsen</p>
-            <a href="#oli" class="pure-menu-heading custom-brand lightbox"><img src="img/oli.jpg"></a>
-            <p><a href="#" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira >></a>
-            </p>
-        </div>
-        <div class="contentDiv">
-            <p>Kynning</p>
-            <a href="#kynning" class="pure-menu-heading custom-brand lightbox"><img src="img/playbutton.png"></a>
-            <p><a href="#" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira >></a></p>
-        </div>
-    </article>
+    </aside>
     <footer>
         <p>2015, Allur réttur áskilinn</p>
         <p>Guðni Natan Gunnarsson, Óli Pétur Olsen & Jóhann Rúnarsson</p>
     </footer>
 </main>
     <script type="text/javascript" src="js/javascript.js"></script>
-
-    <div id="gudni" class="lightboxcontainer">
-        <p>Guðni - Embed here</p>
-    </div>
-    <div id="johann" class="lightboxcontainer">
-        <p>Jóhann - Embed here</p>
-    </div>
-    <div id="oli" class="lightboxcontainer">
-        <p>Óli - Embed here</p>
-    </div>
-    <div id="kynning" class="lightboxcontainer">
-        <p>Kynning - Embed here</p>
-    </div>
-  </body>
+</body>
 </html>
