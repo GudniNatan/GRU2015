@@ -102,6 +102,12 @@
             this.label8 = new System.Windows.Forms.Label();
             this.bt_eyda = new System.Windows.Forms.Button();
             this.bt_refresh = new System.Windows.Forms.Button();
+            this.bt_breytaUmmaeli = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tb_breytaVidburdiMyndURL = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tb_breytaMedlimLykilord = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -144,6 +150,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tb_breytaMedlimLykilord);
+            this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.tb_breytaMedlimID);
             this.groupBox2.Controls.Add(this.bt_breytaMedlim);
@@ -178,7 +186,7 @@
             // 
             // bt_breytaMedlim
             // 
-            this.bt_breytaMedlim.Location = new System.Drawing.Point(63, 151);
+            this.bt_breytaMedlim.Location = new System.Drawing.Point(63, 172);
             this.bt_breytaMedlim.Name = "bt_breytaMedlim";
             this.bt_breytaMedlim.Size = new System.Drawing.Size(89, 23);
             this.bt_breytaMedlim.TabIndex = 6;
@@ -340,6 +348,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.bt_breytaUmmaeli);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.tb_breytaVidburdiMyndURL);
+            this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.tb_breytaVidburdiID);
             this.groupBox3.Controls.Add(this.bt_breytaVidburdi);
@@ -372,7 +384,7 @@
             // 
             // bt_breytaVidburdi
             // 
-            this.bt_breytaVidburdi.Location = new System.Drawing.Point(63, 151);
+            this.bt_breytaVidburdi.Location = new System.Drawing.Point(63, 172);
             this.bt_breytaVidburdi.Name = "bt_breytaVidburdi";
             this.bt_breytaVidburdi.Size = new System.Drawing.Size(89, 23);
             this.bt_breytaVidburdi.TabIndex = 6;
@@ -811,6 +823,58 @@
             this.bt_refresh.UseVisualStyleBackColor = true;
             this.bt_refresh.Click += new System.EventHandler(this.bt_refresh_Click);
             // 
+            // bt_breytaUmmaeli
+            // 
+            this.bt_breytaUmmaeli.Location = new System.Drawing.Point(96, 144);
+            this.bt_breytaUmmaeli.Name = "bt_breytaUmmaeli";
+            this.bt_breytaUmmaeli.Size = new System.Drawing.Size(75, 23);
+            this.bt_breytaUmmaeli.TabIndex = 14;
+            this.bt_breytaUmmaeli.Text = "breyta...";
+            this.bt_breytaUmmaeli.UseVisualStyleBackColor = true;
+            this.bt_breytaUmmaeli.Click += new System.EventHandler(this.bt_breytaUmmaeli_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(19, 149);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(45, 13);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Ummæli";
+            // 
+            // tb_breytaVidburdiMyndURL
+            // 
+            this.tb_breytaVidburdiMyndURL.Location = new System.Drawing.Point(96, 120);
+            this.tb_breytaVidburdiMyndURL.Name = "tb_breytaVidburdiMyndURL";
+            this.tb_breytaVidburdiMyndURL.Size = new System.Drawing.Size(100, 20);
+            this.tb_breytaVidburdiMyndURL.TabIndex = 12;
+            this.tb_breytaVidburdiMyndURL.Text = "img/events/";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(19, 123);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(78, 13);
+            this.label24.TabIndex = 11;
+            this.label24.Text = "Mynd (local url)";
+            // 
+            // tb_breytaMedlimLykilord
+            // 
+            this.tb_breytaMedlimLykilord.Location = new System.Drawing.Point(96, 146);
+            this.tb_breytaMedlimLykilord.Name = "tb_breytaMedlimLykilord";
+            this.tb_breytaMedlimLykilord.Size = new System.Drawing.Size(100, 20);
+            this.tb_breytaMedlimLykilord.TabIndex = 10;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(22, 149);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(43, 13);
+            this.label25.TabIndex = 9;
+            this.label25.Text = "Lykilorð";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -927,5 +991,11 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox tb_nyrVidburdurMyndURL;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button bt_breytaUmmaeli;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tb_breytaVidburdiMyndURL;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox tb_breytaMedlimLykilord;
+        private System.Windows.Forms.Label label25;
     }
 }

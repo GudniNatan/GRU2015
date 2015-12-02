@@ -106,17 +106,6 @@ namespace dub16_Control
                 CloseConnection();
             }
         }
-        public void UppfaeraMedlimur(string id, string kt, string nafn, string net, string simi)
-        {
-            if (OpenConnection() == true)
-            {
-                fyrirspurn = "UPDATE medlimur SET id_medlimur ='" + kt + "', nafn ='" + nafn + "', netfang ='" + net + "', simanumer = '" + simi + "' WHERE id_medlimur = '" + id + "'";
-                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
-                nySQLskipun.ExecuteNonQuery();
-                CloseConnection();
-            }
-        }
-
         public void NyrMedlimur(string nafn, string kt, string simi, string lykilord)
         {
             int cost = 10;
@@ -379,25 +368,29 @@ namespace dub16_Control
                 sqltenging.Close();
             }
          }
-        public void UppfaeraMedlimur(string id, string nafn, string kt, string simi)
+        public void UppfaeraMedlimur(string id, string nafn, string kt, string simi, string lykilord)
         {
-                if (OpenConnection() == true)
-                {
-                    fyrirspurn = "Update medlimur set id = '" + id +
-                        "', nafn='" + nafn + "',kennitala='" + kt + "',simi='" +
-                        simi + "' where id='" + id+ "'";
-                    nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
-                    nySQLskipun.ExecuteNonQuery();
-                    CloseConnection();
-                }
+            int cost = 10;
+            string salt = BlowfishCrypter.Blowfish.GenerateSalt(cost);
+            string hash = BlowfishCrypter.Blowfish.Crypt(lykilord, salt);
+
+            if (OpenConnection() == true)
+            {
+                fyrirspurn = "Update medlimur set id = '" + id +
+                "', nafn='" + nafn + "',kennitala='" + kt + "',simi='" +
+                simi + "', lykilord ='" + hash + "' where id='" + id+ "'";
+                nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
+                nySQLskipun.ExecuteNonQuery();
+                CloseConnection();
+            }
 
          }
-        public void UppfaeraVidburdur(string id, string nafn, string dagsetning)
+        public void UppfaeraVidburdur(string id, string nafn, string dagsetning, string ummaeli, string myndURL)
         {
             if (OpenConnection() == true)
             {
                 fyrirspurn = "Update vidburdur set id = '" + id +
-                    "', heiti='" + nafn + "',dagsetning='" + dagsetning + "' where id='" + id + "'";
+                    "', heiti='" + nafn + "',dagsetning='" + dagsetning + "', ummaeli = '" + ummaeli + "', myndURL = '" + myndURL+ "' where id='" + id + "'";
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 nySQLskipun.ExecuteNonQuery();
                 CloseConnection();

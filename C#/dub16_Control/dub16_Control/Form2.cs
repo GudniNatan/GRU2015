@@ -12,12 +12,10 @@ namespace dub16_Control
 {
     public partial class Form2 : Form
     {
-        /* TODO
-         * allt komið?
-         */
         Gagnagrunnur gagnagrunnur = new Gagnagrunnur();
         string notandi;
         public string ummaeli;
+        public string ummaeliSott;
         string tabpage = "Medlimur";
 
         public Form2()
@@ -118,6 +116,7 @@ namespace dub16_Control
                         tb_breytaVidburdiID.Enabled = false;
                         tb_breytaVidburdiID.Text = listView1.SelectedItems[0].SubItems[0].Text;
                         tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                        tb_breytaVidburdiMyndURL.Text = listView1.SelectedItems[0].SubItems[4].Text;
 
                         string datetime = listView1.SelectedItems[0].SubItems[2].Text;
 
@@ -125,7 +124,8 @@ namespace dub16_Control
                                        System.Globalization.CultureInfo.InvariantCulture);
 
                         string date = myDate.ToString("yyyy-MM-dd");
-                        
+                        ummaeliSott  = listView1.SelectedItems[0].SubItems[3].Text;
+
                         tb_breytaVidburdiDagsetning.Text = date;
                         break;
                     case "Skraning":
@@ -244,14 +244,14 @@ namespace dub16_Control
 
         private void bt_breytaMedlim_Click(object sender, EventArgs e)
         {
-            
             string med_id = tb_breytaMedlimID.Text;
             string med_nafn = tb_breytaMedlimNafn.Text;
             string med_kt = tb_breytaMedlimKennitala.Text;
             string med_simi = tb_breytaMedlimSimi.Text;
+            string med_lykilord = tb_breytaMedlimLykilord.Text;
             try
             {
-                gagnagrunnur.UppfaeraMedlimur(med_id, med_nafn, med_kt, med_simi);
+                gagnagrunnur.UppfaeraMedlimur(med_id, med_nafn, med_kt, med_simi, med_lykilord);
             }
             catch (Exception ex)
             {
@@ -282,9 +282,10 @@ namespace dub16_Control
             string id = tb_breytaVidburdiID.Text;
             string nafn = tb_breytaVidburdiHeiti.Text;
             string dagatal = tb_breytaVidburdiDagsetning.Text;
+            string myndURL = tb_breytaVidburdiMyndURL.Text;
             try
             {
-                gagnagrunnur.UppfaeraVidburdur(id, nafn, dagatal);
+                gagnagrunnur.UppfaeraVidburdur(id, nafn, dagatal, ummaeli, myndURL);
             }
             catch (Exception ex)
             {
@@ -375,6 +376,19 @@ namespace dub16_Control
 
         private void bt_ummaeli_Click(object sender, EventArgs e)
         {
+            using (Ummaeli umform = new Ummaeli())
+            {
+                umform.GetUmmaeli(ummaeli);
+                if (umform.ShowDialog() == DialogResult.OK)
+                {
+                    ummaeli = umform.TheValue;
+                }
+            }
+        }
+
+        private void bt_breytaUmmaeli_Click(object sender, EventArgs e)
+        {
+            ummaeli = ummaeliSott;
             using (Ummaeli umform = new Ummaeli())
             {
                 umform.GetUmmaeli(ummaeli);

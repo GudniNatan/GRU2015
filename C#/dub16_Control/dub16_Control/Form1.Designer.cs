@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tb_kennitala = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bt_innskra = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_lykilord = new System.Windows.Forms.TextBox();
+            this.pictureBoxLoadIcon = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // tb_kennitala
@@ -83,11 +86,24 @@
             this.tb_lykilord.Size = new System.Drawing.Size(228, 32);
             this.tb_lykilord.TabIndex = 3;
             // 
+            // pictureBoxLoadIcon
+            // 
+            this.pictureBoxLoadIcon.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLoadIcon.Image")));
+            this.pictureBoxLoadIcon.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxLoadIcon.InitialImage")));
+            this.pictureBoxLoadIcon.Location = new System.Drawing.Point(413, 381);
+            this.pictureBoxLoadIcon.Name = "pictureBoxLoadIcon";
+            this.pictureBoxLoadIcon.Size = new System.Drawing.Size(26, 31);
+            this.pictureBoxLoadIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxLoadIcon.TabIndex = 5;
+            this.pictureBoxLoadIcon.TabStop = false;
+            this.pictureBoxLoadIcon.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(451, 424);
+            this.Controls.Add(this.pictureBoxLoadIcon);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tb_lykilord);
             this.Controls.Add(this.bt_innskra);
@@ -96,6 +112,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLoadIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,6 +125,7 @@
         private System.Windows.Forms.Button bt_innskra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tb_lykilord;
+        private System.Windows.Forms.PictureBox pictureBoxLoadIcon;
     }
 }
 

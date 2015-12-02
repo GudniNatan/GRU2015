@@ -39,6 +39,7 @@ namespace dub16_Control
 
         private void bt_innskra_Click(object sender, EventArgs e)
         {
+            pictureBoxLoadIcon.Visible = true;
             string kt = tb_kennitala.Text;
             //ef gagna grunnur er opið
             if (gagnagrunnur.OpenConnection() == true)
@@ -69,7 +70,9 @@ namespace dub16_Control
                     MessageBox.Show("Ekki admin");
                 }
             }
-            
+            tb_lykilord.Text = null;
+            tb_kennitala.Text = null;
+            pictureBoxLoadIcon.Visible = false;
                     
         }
         private void login()//
