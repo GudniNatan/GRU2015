@@ -233,6 +233,14 @@
 				echo "Engir viðburðir skráðir.";
 			}
 		}
+		foreach ($skradirVidburdir as $key) {
+			$eventtime = strtotime($key[3]);
+			$tomorrow = strtotime("tomorrow");
+			$today = strtotime("today");
+			if ($eventtime <= $tomorrow && $eventtime >= $today){
+				echo "Athugið, " . $key[2] . " er á næsta leyti.";
+			}
+		}
 	} catch (Exception $e) {
 		echo 'Bilaði';
 	}
