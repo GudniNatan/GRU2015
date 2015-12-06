@@ -79,7 +79,7 @@
 '; 
                 echo '<a href="#vidburdur' . $entry[4] .'" class="pure-menu-heading custom-brand lightbox"><img src="' . $entry[3] . '"></a>
 ';
-                echo '<p><a href="#vidburdur' . $entry[4] .'" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira >></a></p>
+                echo '<p><a href="#vidburdur' . $entry[4] .'" class="pure-button pure-input-1 pure-button-primary lightbox">Lesa meira</a></p>
 ';
                 echo '</div>
 ';
