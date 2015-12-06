@@ -118,9 +118,9 @@ namespace dub16_Control
                         tb_breytaVidburdiHeiti.Text = listView1.SelectedItems[0].SubItems[1].Text;
                         tb_breytaVidburdiMyndURL.Text = listView1.SelectedItems[0].SubItems[4].Text;
 
-                        string datetime = listView1.SelectedItems[0].SubItems[2].Text;
+                        string datetime = listView1.SelectedItems[0].SubItems[2].Text.Split(' ')[0];
 
-                        DateTime myDate = DateTime.ParseExact(datetime, "d.M.yyyy HH:mm:ss",
+                        DateTime myDate = DateTime.ParseExact(datetime, "M/d/yyyy",
                                        System.Globalization.CultureInfo.InvariantCulture);
 
                         string date = myDate.ToString("yyyy-MM-dd");
@@ -281,45 +281,49 @@ namespace dub16_Control
         {
             string id = tb_breytaVidburdiID.Text;
             string nafn = tb_breytaVidburdiHeiti.Text;
-            string dagatal = tb_breytaVidburdiDagsetning.Text;
+            string date = tb_breytaVidburdiDagsetning.Text;
             string myndURL = tb_breytaVidburdiMyndURL.Text;
-            try
+            if (date[4] == '-' && date[7] == '-' && date.Length == 10)
             {
-                gagnagrunnur.UppfaeraVidburdur(id, nafn, dagatal, ummaeli, myndURL);
+                try
+                {
+                    gagnagrunnur.UppfaeraVidburdur(id, nafn, date, ummaeli, myndURL);
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.ToString());
+                }
+                Refresh(tabpage);
             }
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Dagsetning ekki rétt. Dagsetning á að vera á forminu ÁÁÁÁ-MM-DD");
             }
-            Refresh(tabpage);
-
         }
 
         private void bt_nyrVidburdur_Click(object sender, EventArgs e)
         {
             string nafn = tb_nyrVidburdurHeiti.Text;
-            string date = tb_nyrVidburdurDagsetning.Text;
-            try//prufa
-            {
-                DateTime myDateTime = new DateTime();//býr stil daga Tíminn
-                date = myDateTime.Date.ToString("yyyy-MM-dd");
-            }
-            catch (Exception)//skila villuna
-            {
-                MessageBox.Show("Bilaði");
-            }
             string myndURL = tb_nyrVidburdurMyndURL.Text;
-            try
+            string date = tb_nyrVidburdurDagsetning.Text;
+            if (date.Length == 10 && date[4] == '-' && date[7] == '-')
             {
-                gagnagrunnur.NyrVidburdur(nafn,date, ummaeli, myndURL);
+                try
+                {
+                    gagnagrunnur.NyrVidburdur(nafn, date, ummaeli, myndURL);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                ummaeli = null;
+                Refresh(tabpage);
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Dagsetning ekki rétt. Dagsetning á að vera á forminu ÁÁÁÁ-MM-DD");
             }
-            ummaeli = null;
-            Refresh(tabpage);
         }
 
         private void bt_nyrAdmin_Click(object sender, EventArgs e)
