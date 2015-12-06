@@ -84,7 +84,7 @@
             this.tb_lykilord.Name = "tb_lykilord";
             this.tb_lykilord.PasswordChar = '•';
             this.tb_lykilord.Size = new System.Drawing.Size(228, 32);
-            this.tb_lykilord.TabIndex = 3;
+            this.tb_lykilord.TabIndex = 1;
             // 
             // pictureBoxLoadIcon
             // 

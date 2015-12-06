@@ -12,18 +12,18 @@ namespace dub16_Control
 {
     public partial class Form2 : Form
     {
-        Gagnagrunnur gagnagrunnur = new Gagnagrunnur();
-        string notandi;
+        Gagnagrunnur gagnagrunnur = new Gagnagrunnur(); //Nota gagnagrunnur.cs
+        string notandi;     //Kennitala hjá notanda
         public string ummaeli;
         public string ummaeliSott;
-        string tabpage = "Medlimur";
+        string tabpage = "Medlimur";    //Tabpage er notað til að geyma nafnið á töflunni sem verið er að skoða, forritið opnar á Medlimur töflunni
 
-        public Form2()
+        public Form2()      //On load
         {
             InitializeComponent();
             try
             {
-                gagnagrunnur.TengingVidGagnagrunn();
+                gagnagrunnur.TengingVidGagnagrunn();    //Opnar tengingu við gagnagrunn
             }
             catch (Exception ex)
             {
@@ -199,41 +199,38 @@ namespace dub16_Control
         }
 
 
-        private void bt_nyrMedlimur_Click(object sender, EventArgs e)
+        private void bt_nyrMedlimur_Click(object sender, EventArgs e)   //Nýr meðlimur
         {
                                    
-            string nafn = tb_nyrMedlimurNafn.Text;
+            string nafn = tb_nyrMedlimurNafn.Text;  //Sækir breytur úr textadálkum
             string kt = tb_nyrMedlimurKennitala.Text;
             string simi = tb_nyrMedlimurSimi.Text;
             string lykilord = tb_nyrMedlimurLykilord.Text;
             try
             {
-                gagnagrunnur.NyrMedlimur(nafn, kt, simi, lykilord);
+                gagnagrunnur.NyrMedlimur(nafn, kt, simi, lykilord); //Notar NyrMedlimur úr gagnagrunnur.cs til að gera nýjann meðlim
 
             }
-            catch (Exception ex)
+            catch (Exception ex)    //Ef eitthvað fer úrskeiðis
             {
 
                 MessageBox.Show(ex.ToString());
             }
-            Refresh(tabpage);
+            Refresh(tabpage);   //Refresh-ar töfluna til að sýna nýja meðliminn
         }
 
         private void bt_refresh_Click(object sender, EventArgs e)
         {
-            Refresh(tabpage);
-            
+            Refresh(tabpage);   //Refresh-ar töfluna sem verið er að skoða
         }
-        private void Refresh(string tafla)
+
+        private void Refresh(string tafla)  //Til að refresh-a töfluna
         {
-            listView1.Items.Clear();
+            listView1.Items.Clear();        //Hreinsar listview-ið
             List<string> linur = new List<string>();
             try
             {
-                linur = gagnagrunnur.LesaUrSqlToflu(tabpage);
-
-                FyllaListView(tafla);
-
+                FyllaListView(tafla);   //Fyllir listview
             }
             catch (Exception ex)
             {
