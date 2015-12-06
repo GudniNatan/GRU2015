@@ -44,7 +44,12 @@ session_start();
 <?php
         include 'dbcon.php';
         if (isset($_SESSION["wronglogin"])) {
-            echo "Röng kennitala eða lykilord. Reyndu aftur.";
+            if (isset($_SESSION["customerror"])) {
+                echo $_SESSION["customerror"];
+            }
+            else{
+                echo "Röng kennitala eða lykilord. Reyndu aftur.";
+            }
         }
         session_destroy();
     ?></p>

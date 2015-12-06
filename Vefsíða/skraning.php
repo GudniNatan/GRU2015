@@ -63,6 +63,42 @@
 			die();
 		}
 	}
+	if (isset($_POST['register'])) {
+		if (isset($_POST['kennitala'])) {
+			$kennitala = $_POST['kennitala'];
+
+			if (checksumCheck($kennitala) != true) {
+					$_SESSION["wronglogin"] = "true";
+					$_SESSION["customerror"] = "Kennitala ekki rétt. Þarf að vera raunveruleg kennitala.";
+					header("Location: login.php");
+					die();
+			}
+		}
+	}
+	function checksumCheck($kt) {
+	    $checksum = substr($kt,0,1)*3;
+	    $checksum += substr($kt,1,1)*2;
+	    $checksum += substr($kt,2,1)*7;
+	    $checksum += substr($kt,3,1)*6;
+	    $checksum += substr($kt,4,1)*5;
+	    $checksum += substr($kt,5,1)*4;
+	    $checksum += substr($kt,6,1)*3;
+	    $checksum += substr($kt,7,1)*2;
+	 
+	    $moduloRem = 11-fmod($checksum,11);
+	    if (($moduloRem == '11') && (substr($kt,8,1) === '0')) {
+	        return true;
+	    }
+	    elseif ($moduloRem == 10) {
+	        return false;
+	    }
+	    elseif ($moduloRem == substr($kt,8,1)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	}
 ?>
 <!DOCTYPE html>
 <head>
