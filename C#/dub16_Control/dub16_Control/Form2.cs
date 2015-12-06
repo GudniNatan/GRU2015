@@ -241,50 +241,50 @@ namespace dub16_Control
 
         private void bt_breytaMedlim_Click(object sender, EventArgs e)
         {
-            string med_id = tb_breytaMedlimID.Text;
-            string med_nafn = tb_breytaMedlimNafn.Text;
-            string med_kt = tb_breytaMedlimKennitala.Text;
-            string med_simi = tb_breytaMedlimSimi.Text;
-            string med_lykilord = tb_breytaMedlimLykilord.Text;
+            string id = tb_breytaMedlimID.Text;    //Sækir breytur úr textaboxum
+            string nafn = tb_breytaMedlimNafn.Text;
+            string kt = tb_breytaMedlimKennitala.Text;
+            string simi = tb_breytaMedlimSimi.Text;
+            string lykilord = tb_breytaMedlimLykilord.Text;
             try
             {
-                gagnagrunnur.UppfaeraMedlimur(med_id, med_nafn, med_kt, med_simi, med_lykilord);
+                gagnagrunnur.UppfaeraMedlimur(id, nafn, kt, simi, lykilord);    //Notar UppfaeraMedlimur úr gagnagrunnur.cs
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.ToString());
             }
-            Refresh(tabpage);
+            Refresh(tabpage);   //Refresh til að sýna breytingar
         }
 
         private void bt_nySkraning_Click(object sender, EventArgs e)
         {
-            int medlimur = Convert.ToInt32(tb_nySkraningMedlimurID.Text);
+            int medlimur = Convert.ToInt32(tb_nySkraningMedlimurID.Text);   //Sæki breytur úr textaboxum
             int vidburdur = Convert.ToInt32(tb_nySkraningVidburdurID.Text);
             try
             {
-                gagnagrunnur.NySkraning(vidburdur, medlimur);
+                gagnagrunnur.NySkraning(vidburdur, medlimur);   //Notar NySkraning úr gagnagrunnur.cs til að skrá meðlim á viðburð
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            Refresh(tabpage);
-            
+            Refresh(tabpage);   //Refresh til að sýna breytingar
+
         }
 
         private void bt_breytaVidburdi_Click(object sender, EventArgs e)
         {
-            string id = tb_breytaVidburdiID.Text;
+            string id = tb_breytaVidburdiID.Text;   //Sækir breytur úr textaboxum
             string nafn = tb_breytaVidburdiHeiti.Text;
             string date = tb_breytaVidburdiDagsetning.Text;
             string myndURL = tb_breytaVidburdiMyndURL.Text;
-            if (date[4] == '-' && date[7] == '-' && date.Length == 10)
+            if (date[4] == '-' && date[7] == '-' && date.Length == 10)  //Til að vera viss um að dagsetning sé á réttu formi
             {
                 try
                 {
-                    gagnagrunnur.UppfaeraVidburdur(id, nafn, date, ummaeli, myndURL);
+                    gagnagrunnur.UppfaeraVidburdur(id, nafn, date, ummaeli, myndURL);   //Notar NySkraning úr gagnagrunnur.cs til að skrá meðlim á viðburð
                 }
                 catch (Exception ex)
                 {

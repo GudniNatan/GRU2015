@@ -19,7 +19,6 @@ namespace dub16_Control
         private string database;
         private string uid;
         private string password;
-        public string user;
         string tengistrengur = null;
         string fyrirspurn = null;
 
