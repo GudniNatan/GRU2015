@@ -243,7 +243,7 @@ namespace dub16_Control
             }
             return lina;
         }
-        public bool Kennitolutekk(string kennitala)
+        public bool Kennitolutekk(string kennitala) //Tjékkar hvort kennitala sé valid
         {
             kennitala = kennitala.Trim();
             int i = kennitala.IndexOf('-');
@@ -278,12 +278,12 @@ namespace dub16_Control
             }
             return false;
         }
-        public bool IsAdmin(string kennitala)
+        public bool IsAdmin(string kennitala)   //Skoðar hvort gefinn notandi sé admin.
         {
             string lina = null;
             if (OpenConnection() == true)
             {
-                fyrirspurn = "SELECT Admin.ID  FROM ADMIN INNER JOIN Medlimur ON Admin.medlimur_id = Medlimur.ID WHERE Medlimur.Kennitala = '" + kennitala + "'";
+                fyrirspurn = "SELECT Admin.ID  FROM ADMIN INNER JOIN Medlimur ON Admin.medlimur_id = Medlimur.ID WHERE Medlimur.Kennitala = '" + kennitala + "'";   //Selectar alla admin með gefna kennitölu
                 nySQLskipun = new MySqlCommand(fyrirspurn, sqltenging);
                 sqllesari = nySQLskipun.ExecuteReader();
                 while (sqllesari.Read())
@@ -294,13 +294,12 @@ namespace dub16_Control
                     }
                 }
                 sqltenging.Close();
-                if (lina == string.Empty || lina == null)
+                if (lina == string.Empty || lina == null)   //Ef það er enginn admin með gefna kennitölu er það false
                 {
                     return false;
                 }
-                else
+                else    //Annars true
                 {
-
                     return true;
                 }
             }
